@@ -1,0 +1,131 @@
+@font-face{
+    font-family:"Roboto Mono";
+    font-style:normal;
+    font-weight:300;
+    src:url(/assets/font-light.ttf?version=63f6931) format("woff2");
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215
+}
+@font-face{
+    font-family:"Roboto Mono";
+    font-style:normal;
+    font-weight:500;
+    src:url(/assets/font-medium.ttf?version=63f6931) format("woff2");
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2212,U+2215
+}
+body{
+    margin:0;
+    padding:0;
+    font-family:"Roboto Mono",monospace;
+    font-size:16px;
+    font-weight:300;
+    /* color:#333; */
+    color: rgb(228, 225, 225);
+    background-color: black;
+}
+h1,h2,h3,h4,h5,h6{
+    margin-top:24px;
+    margin-bottom:0;
+    font-weight:bold
+}
+h1+*,h2+*,h3+*,h4+*,h5+*,h6+*{
+    margin-top:0
+}
+h1{
+    font-size:32px
+}
+h2{
+    font-size:24px
+}
+p{
+    margin:16px 0 16px 0
+}
+strong{
+    font-weight:500
+}
+a{
+    text-decoration:none;
+    color:#33c
+}
+a:hover{
+    text-decoration:underline;
+    cursor:pointer
+}
+a:visited{
+    color:#33c
+}
+nav a,nav a:hover,nav a:visited{
+    color:rgb(114, 114, 114)
+}
+nav a:not(:first-child){
+    margin-left:16px;
+    float:right
+}
+nav a:not(:first-child):before{
+    font-size:16px;
+    /* content:"> " */
+}
+blockquote{
+    color:#888;
+    background:#f8f8f8;
+    border-left:4px solid #ddd;
+    margin:16px 0 16px 0;
+    padding:8px 8px 8px 24px
+}
+blockquote p{
+    margin:0
+}
+blockquote p+p{
+    margin-top:16px
+}
+blockquote a,blockquote a:hover,blockquote a:visited{
+    color:#333
+}
+.nickname{
+    color:#bbb
+}
+.wrapper{
+    max-width:770px;
+    margin:0 auto;
+    padding:16px 32px
+}
+img{
+    display:block;
+    margin:auto;
+    max-width:100%
+}
+ul{
+    margin:16px 0;
+    padding:0;
+    list-style-type:none
+}
+ul li{
+    margin:2px 0;
+    padding:0 0 0 16px;
+    text-indent:-16px
+}
+ul li:before{
+    font-size:16px;
+    content:"> "
+}
+ul li p{
+    display:initial
+}
+ul li span.post-date,ul li span.other-author{
+    float:right;
+    color:#bbb
+}
+article span.post-date{
+    color:#bbb
+}
+footer{
+    margin-top:32px;
+    padding-bottom:32px;
+    text-align:center;
+    color:#bbb
+}
+footer p{
+    margin:0
+}
+footer a,footer a:hover,footer a:visited{
+    color:#bbb
+}
