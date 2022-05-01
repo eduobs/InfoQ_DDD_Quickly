@@ -177,6 +177,69 @@
                         feedback dos analistas para os especialistas de negócios ou dos desenvolvedores para os
                         analistas.
                     </p>
+                    <p>
+                        Outra abordagem são as metodologias ágeis, como Extreme Programming (XP). Essas metodologias são
+                        um movimento coletivo contra a abordagem em cascata, resultante das dificuldades de tentar
+                        antecipar todos os requisitos, principalmente à luz da mudança de requisitos. É muito difícil
+                        criar um modelo completo que cubra todos os aspectos de um domínio antecipadamente. É preciso
+                        muito pensamento e, muitas vezes, você simplesmente não consegue ver todos os problemas
+                        envolvidos desde o início, nem pode prever alguns dos efeitos colaterais negativos ou erros de
+                        seu projeto. Outro problema que o Agil tenta resolver é a chamada “paralisia da análise”, com
+                        os membros da equipe com tanto medo de tomar decisões de design que não fazem nenhum progresso.
+                        Embora os defensores do Agil reconheçam a importância da decisão de design, eles resistem ao
+                        design inicial. Em vez disso, eles empregam uma grande flexibilidade de implementação e, por
+                        meio de desenvolvimento iterativo com participação contínua das partes interessadas de negócios
+                        e muita refatoração, a equipe de desenvolvimento aprende mais sobre o domínio do cliente e pode
+                        produzir melhor software que atenda às necessidades do cliente.
+                    </p>
+                    <p>
+                        Os métodos ágeis têm seus próprios problemas e limitações; eles defendem a simplicidade, mas
+                        todos têm sua própria visão do que isso significa. Além disso, a refatoração contínua feita por
+                        desenvolvedores sem princípios sólidos de design produzirá um código difícil de entender ou
+                        alterar. E enquanto a abordagem em cascata pode levar ao excesso de engenharia, o medo do
+                        excesso de engenharia pode levar a outro medo: o medo de fazer um projeto profundo e
+                        cuidadosamente pensado.
+                    </p>
+                    <p>
+                        Este livro apresenta os princípios do design orientado ao domínio, que quando aplicado pode
+                        aumentar muito a capacidade de qualquer processo de desenvolvimento de modelar e implementar os
+                        problemas complexos no domínio de maneira sustentável. Domain-Driven-Design combina design e
+                        prática de desenvolvimento e mostra como design e desenvolvimento podem trabalhar juntos para
+                        criar uma solução melhor. Um bom design acelerará o desenvolvimento, enquanto o feedback
+                        proveniente do processo de desenvolvimento aprimorará o design.
+                    </p>
+                    <h2>Construindo o Conhecimento do Domínio</h2>
+                    <p>
+                        Vamos considerar o exemplo de um projeto de sistema de controle de voo de avião e como o
+                        conhecimento de domínio pode ser construído.
+                    </p>
+                    <p>
+                        Milhares de aviões estão no ar em um determinado momento em todo o planeta. Eles estão voando
+                        seus próprios caminhos em direção aos seus destinos, e é muito importante garantir que eles não
+                        colidam no ar. Não tentaremos elaborar todo o sistema de controle de tráfego, mas um subconjunto
+                        menor que é um sistema de monitoramento de voo. O projeto proposto é um sistema de monitoramento
+                        que rastreia cada voo sobre uma determinada área, determina se o voo segue sua suposta rota ou
+                        não, e se existe a possibilidade de colisão.
+                    </p>
+                    <p>
+                        Por onde começamos a partir de uma perspectiva de desenvolvimento de software? Na seção anterior
+                        dissemos que deveríamos começar entendendo o domínio, que neste caso é o monitoramento do
+                        tráfego aéreo. Os controladores de tráfego aéreo são os especialistas deste domínio. Mas os
+                        controladores não são projetistas de sistemas ou especialistas em software. Você não pode
+                        esperar que eles lhe entreguem uma descrição completa do domínio do problema.
+                    </p>
+                    <p>
+                        Os controladores de tráfego aéreo possuem vasto conhecimento sobre seu domínio, mas para poder
+                        construir um modelo é preciso extrair informações essenciais e generalizá-las. Quando você
+                        começar a conversar com eles, ouvirá muito sobre aeronaves decolando e pousando, aeronaves no ar
+                        e o perigo de colisão, aviões esperando antes de serem autorizados a pousar, etc. Para encontrar
+                        ordem nessa quantidade aparentemente caótica de informações, precisamos começar em algum lugar.
+                    </p>
+                    <p>
+                        O controlador e você concordam que cada aeronave possui um aeródromo de partida e de destino.
+                        Então temos uma aeronave, uma partida e um destino, como mostra a figura abaixo.
+                    </p>
+                    
                 </article>
             </main>
         </main>
