@@ -236,13 +236,80 @@
                         ordem nessa quantidade aparentemente caótica de informações, precisamos começar em algum lugar.
                     </p>
                     <p>
-                        O controlador e você concordam que cada aeronave possui um aeródromo de partida e de destino.
+                        O controlador e você concordam que cada aeronave possui um aeroporto de partida e de destino.
                         Então temos uma aeronave, uma partida e um destino, como mostra a figura abaixo.
                     </p>
                     <img src="assets/01-01.JPG" title="img01" />
+                    <p>
+                        OK, o avião decola de um lugar e pousa em outro. Mas o que acontece no ar? Qual caminho de vôo
+                        ele percorre? Na verdade, estamos mais interessados ​​no que acontece enquanto ela está no ar. O
+                        controlador diz que a cada avião é atribuído um plano de voo que deve descrever toda a viagem
+                        aérea. Ao ouvir sobre um plano de voo, você pode pensar em sua mente que se trata do caminho
+                        seguido pelo avião no ar. Após uma discussão mais aprofundada, você ouve uma palavra
+                        interessante: rota. Ele chama sua atenção instantaneamente e por um bom motivo. A rota contém um
+                        conceito importante de viagens aéreas. Isso é o que os aviões fazem enquanto voam, eles seguem
+                        uma rota. É óbvio que os pontos de partida e destino da aeronave são também os pontos inicial e
+                        final da rota. Assim, em vez de associar a aeronave aos pontos de partida e destino, parece mais
+                        natural associá-la a uma rota, que por sua vez está associada à partida e destino
+                        correspondentes.
+                    </p>
+                    <img src="assets/01-02.JPG" title="img02" />
+                    <p>
+                        Conversando com o controlador sobre as rotas que os aviões seguem, você descobre que na verdade
+                        a rota é composta por pequenos segmentos, que juntos constituem uma espécie de linha torta da
+                        partida ao destino. A linha deve passar por pontos fixos predeterminados. Assim, uma rota pode
+                        ser considerada como uma série de correções consecutivas. Neste ponto você não vê mais a partida
+                        e o destino como os pontos terminais da rota, mas apenas mais duas dessas correções. Isso
+                        provavelmente é bem diferente de como o controlador os vê, mas é uma abstração necessária que
+                        ajuda mais tarde. As mudanças resultantes com base nessas descobertas são:
+                    </p>
+                    <img src="assets/01-03.JPG" title="img3" />
+                    <p>
+                        O diagrama mostra outro elemento, o fato de que cada ponto fixo é um ponto no espaço seguido
+                        pela rota, e é expresso como um ponto tridimensional. Mas quando você falar com o controlador,
+                        descobrirá que ele não vê dessa maneira. Na verdade, ele vê a rota como a projeção na terra do
+                        voo do avião. As correções são apenas pontos na superfície da Terra determinados exclusivamente
+                        por sua latitude e longitude. Então o diagrama correto é:
+                    </p>
+                    <img src="assets/01-04.JPG" title="img4" />
+                    <p>
+                        O que realmente está acontecendo aqui? Você e os especialistas do domínio estão conversando,
+                        estão trocando conhecimento. Você começa a fazer perguntas e eles respondem. Enquanto fazem
+                        isso, eles extraem conceitos essenciais do domínio do tráfego aéreo. Esses conceitos podem sair
+                        sem polimento e desorganizados, mas mesmo assim são essenciais para a compreensão do domínio.
+                        Você precisa aprender o máximo possível sobre o domínio com os especialistas. E fazendo as
+                        perguntas certas e processando as informações da maneira certa, você e os especialistas
+                        começarão a esboçar uma visão do domínio, um modelo de domínio. Essa visão não é completa nem
+                        correta, mas é o começo que você precisa. Tente descobrir os conceitos essenciais do domínio.
+                    </p>
+                    <p>
+                        Esta é uma parte importante do design. Normalmente, há longas discussões entre arquitetos ou
+                        desenvolvedores de software e os especialistas do domínio. Os especialistas em software querem
+                        extrair conhecimento dos especialistas do domínio e também precisam transformá-lo em uma forma
+                        útil. Em algum momento, eles podem querer criar um protótipo inicial para ver como funciona até
+                        agora. Ao fazer isso, eles podem encontrar alguns problemas com seu modelo, ou sua abordagem, e
+                        podem querer mudar o modelo. A comunicação não é apenas uma via, dos especialistas do domínio ao
+                        arquiteto de software e ainda aos desenvolvedores. Há também o feedback, que ajuda a criar um
+                        modelo melhor e uma compreensão mais clara e correta do domínio. Os especialistas de domínio
+                        conhecem bem sua área de atuação, mas organizam e utilizam seu conhecimento de uma forma
+                        específica, que nem sempre é a melhor para ser implementada em um sistema de software. A mente
+                        analítica do designer de software ajuda a desenterrar alguns dos principais conceitos do domínio
+                        durante as discussões com especialistas do domínio e também ajuda a construir uma estrutura para
+                        futuras discussões, como veremos no próximo capítulo. Nós, os especialistas em software
+                        (arquitetos e desenvolvedores de software) e os especialistas em domínio, estamos criando o
+                        modelo do domínio juntos, e o modelo é o local onde essas duas áreas de especialização se
+                        encontram. Isso pode parecer um processo muito demorado, e é, mas é assim que deve ser, porque
+                        no final o objetivo do software é resolver problemas de negócios em um domínio da vida real,
+                        então ele deve se misturar perfeitamente com o domínio.
+                    </p>
                 </article>
             </main>
         </main>
+        
+        <nav>
+            <a href="introducao.html">&lt;&lt; Introdução</a>
+            <a href="capitulo2.html">Capítulo 2 >></a>
+        </nav>
 
         <footer>
             <p>
