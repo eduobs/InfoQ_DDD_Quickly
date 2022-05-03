@@ -128,21 +128,153 @@
                     <br />
                     <h2>Criando a Ubiquitous Language</h2>
                     <p>
-                        Como podemos começar a construir uma linguagem? Aqui está um diálogo hipotético entre um desenvolvedor de software e um especialista de domínio no projeto de monitoramento de tráfego aéreo. Cuidado com as palavras que aparecem em negrito.
+                        Como podemos começar a construir uma linguagem? Aqui está um diálogo hipotético entre um
+                        desenvolvedor de software e um especialista de domínio no projeto de monitoramento de tráfego
+                        aéreo. Cuidado com as palavras que aparecem em negrito.
                     </p>
                     <p>
                         <b>Desenvolvedor</b>: Queremos monitorar o tráfego aéreo. Por onde começamos?
                         <br />
-                        <b>Especialista</b>: Vamos começar com o básico. Todo esse tráfego é feito de <u>aviões</u>. Cada avião decola de um local de <u>partida</u> e pousa em um local de <u>destino</u>.
-                        <b>Desenvolvedor</b>: Isso é fácil. Quando ele voa, o avião pode escolher qualquer caminho aéreo que os pilotos gostem? Cabe a eles decidir qual caminho devem seguir, desde que cheguem ao destino?
-                        <b>Especialista</b>: Ah, não. Os pilotos recebem uma <u>rota</u> que devem seguir. E eles devem ficar nessa rota o mais próximo possível.
-                        <b>Desenvolvedor</b>: Estou pensando nessa <u>rota</u> como um caminho 3D no ar. Se usarmos um sistema cartesiano de coordenadas, a <u>rota</u> é simplesmente uma série de pontos 3D.
-                        <b>Especialista</b>: Eu não acho. Não vemos a <u>rota</u> dessa forma. A <u>rota</u> é, na verdade, a projeção no solo da trajetória aérea esperada do avião. A <u>rota</u> passa por uma série de pontos no solo determinados por sua <u>latitude</u> e <u>longitude</u>.
-                        <b>Desenvolvedor</b>: OK, então vamos chamar cada um desses pontos de correção, porque é um ponto <u>fixo</u> da superfície da Terra. E usaremos então uma série de pontos 2D para descrever o caminho. E, a propósito, a <u>partida</u> e o <u>destino</u> são apenas <u>correções</u>. Não devemos considerá-los como conceitos separados. A <u>rota</u> atinge o destino assim que atinge qualquer outro ponto <u>fixo</u>. O avião deve seguir a rota, mas isso significa que ele pode voar tão alto ou tão baixo quanto quiser?
-                        <b>Especialista</b>: Não. A <u>altitude</u> que um avião deve ter em um determinado momento também é estabelecida no <u>plano de voo</u>.
+                        <b>Especialista</b>: Vamos começar com o básico. Todo esse tráfego é feito de <u>aviões</u>.
+                        Cada avião decola de um local de <u>partida</u> e pousa em um local de <u>destino</u>.
+                        <br />
+                        <b>Desenvolvedor</b>: Isso é fácil. Quando ele voa, o avião pode escolher qualquer caminho aéreo
+                        que os pilotos gostem? Cabe a eles decidir qual caminho devem seguir, desde que cheguem ao
+                        destino?
+                        <br />
+                        <b>Especialista</b>: Ah, não. Os pilotos recebem uma <u>rota</u> que devem seguir. E eles devem
+                        ficar nessa rota o mais próximo possível.
+                        <br />
+                        <b>Desenvolvedor</b>: Estou pensando nessa <u>rota</u> como um caminho 3D no ar. Se usarmos um
+                        sistema cartesiano de coordenadas, a <u>rota</u> é simplesmente uma série de pontos 3D.
+                        <br />
+                        <b>Especialista</b>: Eu não acho. Não vemos a <u>rota</u> dessa forma. A <u>rota</u> é, na
+                        verdade, a projeção no solo da trajetória aérea esperada do avião. A <u>rota</u> passa por uma
+                        série de pontos no solo determinados por sua <u>latitude</u> e <u>longitude</u>.
+                        <br />
+                        <b>Desenvolvedor</b>: OK, então vamos chamar cada um desses pontos de correção, porque é um
+                        ponto <u>fixo</u> da superfície da Terra. E usaremos então uma série de pontos 2D para descrever
+                        o caminho. E, a propósito, a <u>partida</u> e o <u>destino</u> são apenas <u>correções</u>. Não
+                        devemos considerá-los como conceitos separados. A <u>rota</u> atinge o destino assim que atinge
+                        qualquer outro ponto <u>fixo</u>. O avião deve seguir a rota, mas isso significa que ele pode
+                        voar tão alto ou tão baixo quanto quiser?
+                        <br />
+                        <b>Especialista</b>: Não. A <u>altitude</u> que um avião deve ter em um determinado momento
+                        também é estabelecida no <u>plano de voo</u>.
+                        <br />
                         <u>Plano de voo</u>? O que é isso?
-                        <b>Especialista</b>: Antes de sair do aeroporto, os pilotos recebem um <u>plano de voo</u> detalhado que inclui todos os tipos de informações sobre o <u>voo</u>: a <u>rota</u>, <u>altitude</u> de cruzeiro, <u>velocidade</u> de cruzeiro, tipo de <u>avião</u>, até informações sobre os tripulantes.
-                        <b>Desenvolvedor</b>: Hmm, o <u>plano de voo</u> parece muito importante para mim. Vamos incluí-lo no modelo.
+                        <br />
+                        <b>Especialista</b>: Antes de sair do aeroporto, os pilotos recebem um <u>plano de voo</u>
+                        detalhado que inclui todos os tipos de informações sobre o <u>voo</u>: a <u>rota</u>,
+                        <u>altitude</u> de cruzeiro, <u>velocidade</u> de cruzeiro, tipo de <u>avião</u>, até
+                        informações sobre os tripulantes.
+                        <br />
+                        <b>Desenvolvedor</b>: Hmm, o <u>plano de voo</u> parece muito importante para mim. Vamos
+                        incluí-lo no modelo.
+                        <br />
+                        <img src="assets/02-01.JPG" title="img0201" />
+                        <br />
+                        <b>Desenvolvedor</b>: Melhor assim. Agora que estou olhando para isso, percebo algo. Quando
+                        estamos monitorando o tráfego aéreo, não estamos realmente interessados nos aviões em si, se são
+                        brancos ou azuis, ou se são Boeing ou Airbus. Estamos interessados é no <u>voo</u> deles. Isso é
+                        o que estamos realmente rastreando e medindo. Acho que deveríamos mudar um pouco o modelo para
+                        ser mais preciso.
+                    </p>
+                    <p>
+                        Observe como essa equipe, falando sobre o domínio do monitoramento de tráfego aéreo e em torno
+                        de seu modelo incipiente, está aos poucos criando uma linguagem composta pelas palavras
+                        sublinhadas. Observe também como essa linguagem muda o modelo!
+                    </p>
+                    <p>
+                        No entanto, na vida real, esse diálogo é muito mais detalhado, e as pessoas muitas vezes falam
+                        sobre as coisas indiretamente, ou entram em muitos detalhes, ou escolhem os conceitos errados;
+                        isso pode dificultar muito a criação da linguagem. Para começar a lidar com isso, todos os
+                        membros da equipe devem estar cientes da necessidade de criar uma linguagem comum e devem ser
+                        lembrados de manter o foco no essencial e usar a linguagem sempre que necessário. Devemos usar
+                        nosso próprio jargão durante essas sessões o mínimo possível, e devemos usar a Linguagem Ubíqua
+                        porque isso nos ajuda a nos comunicar com clareza e precisão.
+                    </p>
+                    <img src="assets/02-02.JPG" title="img0202" />
+                    <p>
+                        Também é altamente recomendável que os desenvolvedores implementem os principais conceitos do
+                        modelo no código. Uma classe pode ser escrita para Route e outra para Fix. A classe Fix pode
+                        herdar de uma classe 2DPoint ou pode conter um 2DPoint como seu atributo principal. Isso depende
+                        de outros fatores que serão discutidos mais adiante. Ao criar classes para os conceitos de
+                        modelo correspondentes, estamos mapeando entre o modelo e o código e entre a linguagem e o
+                        código. Isso é muito útil, pois torna o código mais legível e reproduz o modelo. Ter o código
+                        expressando o modelo compensa mais tarde no projeto, quando o modelo cresce e quando mudanças no
+                        código podem ter consequências indesejáveis se o código não for projetado adequadamente.
+                    </p>
+                    <p>
+                        Vimos como a linguagem é compartilhada por toda a equipe, e também como ela ajuda na construção
+                        do conhecimento e na criação do modelo. O que devemos usar para a linguagem? Apenas discurso?
+                        Usamos diagramas. O quê mais? Escrita?
+                    </p>
+                    <p>
+                        Alguns podem dizer que a UML é boa o suficiente para construir um modelo. E, de fato, é uma
+                        ótima ferramenta para escrever conceitos-chave como classes e expressar relacionamentos entre
+                        eles. Você pode desenhar quatro ou cinco classes em um bloco de desenho, escrever seus nomes e
+                        mostrar as relações entre elas. É muito fácil para todos seguir o que você está pensando, e uma
+                        expressão gráfica de uma ideia é fácil de entender. Todos compartilham instantaneamente a mesma
+                        visão sobre um determinado tópico, e fica mais simples se comunicar com base nisso. Quando
+                        surgem novas ideias e o diagrama é modificado para refletir a mudança conceitual.
+                    </p>
+                    <p>
+
+
+
+                        Diagramas UML são muito úteis quando o número de elementos envolvidos é pequeno. Mas UML pode
+                        crescer como cogumelos depois de uma boa chuva de verão. O que você faz quando tem centenas de
+                        aulas preenchendo uma folha de papel tão longa quanto Mississippi? É difícil de ler até mesmo
+                        pelos especialistas em software, sem mencionar os especialistas em domínio. Eles não entenderão
+                        muito quando ficar grande, e o faz mesmo para projetos de tamanho médio.
+                    </p>
+                    <p>
+                        Além disso, a UML é boa para expressar classes, seus atributos e relacionamentos entre elas. Mas
+                        o comportamento das classes e as restrições não são tão facilmente expressos. Para isso a UML
+                        recorre ao texto colocado como notas no diagrama. Portanto, a UML não pode transmitir dois
+                        aspectos importantes de um modelo: o significado dos conceitos que ela representa e o que os
+                        objetos devem fazer. Mas tudo bem, já que podemos adicionar outras ferramentas de comunicação
+                        para fazer isso.
+                    </p>
+                    <p>
+                        Podemos usar documentos. Uma maneira aconselhável de comunicar o modelo é fazer alguns pequenos
+                        diagramas, cada um contendo um subconjunto do modelo. Esses diagramas conteriam várias classes e
+                        o relacionamento entre elas. Isso já inclui boa parte dos conceitos envolvidos. Em seguida,
+                        podemos adicionar texto ao diagrama. O texto explicará o comportamento e as restrições que o
+                        diagrama não consegue. Cada uma dessas subseções tenta explicar um aspecto importante do
+                        domínio, aponta um “foco” para iluminar uma parte do domínio.
+                    </p>
+                    <p>
+                        Esses documentos podem até ser desenhados à mão, pois transmitem a sensação de que são
+                        temporários, podendo ser alterados em um futuro próximo, o que é verdade, pois o modelo é
+                        alterado muitas vezes no início antes de atingir um status mais estável.
+                    </p>
+                    <p>
+                        Pode ser tentador tentar criar um diagrama grande em todo o modelo. No entanto, na maioria das
+                        vezes, esses diagramas são quase impossíveis de montar. Além disso, mesmo que você consiga fazer
+                        esse diagrama unificado, ele ficará tão confuso que não transmitirá o entendimento melhor do que
+                        a coleção de pequenos diagramas.
+                    </p>
+                    <p>
+                        Desconfie de documentos longos. Leva muito tempo para escrevê-los, e eles podem se tornar
+                        obsoletos antes de serem concluídos. Os documentos devem estar em sincronia com o modelo.
+                        Documentos antigos, usando a linguagem errada e não refletindo o modelo não são muito úteis.
+                        Tente evitá-los quando possível.
+                    </p>
+                    <p>
+                        Também é possível se comunicar usando código. Essa abordagem é amplamente defendida pela
+                        comunidade XP. Um código bem escrito pode ser muito comunicativo. Embora o comportamento
+                        expresso por um método seja claro, o nome do método é tão claro quanto seu corpo? As afirmações
+                        de um teste falam por si, mas e os nomes das variáveis ​​e a estrutura geral do código? Eles
+                        estão contando toda a história, alto e claro? O código, que funcionalmente faz a coisa certa,
+                        não expressa necessariamente a coisa certa. Escrever um modelo em código é muito difícil.
+                    </p>
+                    <p>
+                        Existem outras maneiras de se comunicar durante o projeto. Não é o propósito deste livro
+                        apresentar todos eles. Uma coisa, no entanto, é clara: a equipe de design, composta por
+                        arquitetos de software, desenvolvedores e especialistas em domínio, precisa de uma linguagem que
+                        unifique suas ações e os ajude a criar um modelo e expressá-lo com código.
                     </p>
                 </article>
             </main>
