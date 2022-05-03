@@ -134,6 +134,15 @@
                         <b>Desenvolvedor</b>: Queremos monitorar o tráfego aéreo. Por onde começamos?
                         <br />
                         <b>Especialista</b>: Vamos começar com o básico. Todo esse tráfego é feito de <u>aviões</u>. Cada avião decola de um local de <u>partida</u> e pousa em um local de <u>destino</u>.
+                        <b>Desenvolvedor</b>: Isso é fácil. Quando ele voa, o avião pode escolher qualquer caminho aéreo que os pilotos gostem? Cabe a eles decidir qual caminho devem seguir, desde que cheguem ao destino?
+                        <b>Especialista</b>: Ah, não. Os pilotos recebem uma <u>rota</u> que devem seguir. E eles devem ficar nessa rota o mais próximo possível.
+                        <b>Desenvolvedor</b>: Estou pensando nessa <u>rota</u> como um caminho 3D no ar. Se usarmos um sistema cartesiano de coordenadas, a <u>rota</u> é simplesmente uma série de pontos 3D.
+                        <b>Especialista</b>: Eu não acho. Não vemos a <u>rota</u> dessa forma. A <u>rota</u> é, na verdade, a projeção no solo da trajetória aérea esperada do avião. A <u>rota</u> passa por uma série de pontos no solo determinados por sua <u>latitude</u> e <u>longitude</u>.
+                        <b>Desenvolvedor</b>: OK, então vamos chamar cada um desses pontos de correção, porque é um ponto <u>fixo</u> da superfície da Terra. E usaremos então uma série de pontos 2D para descrever o caminho. E, a propósito, a <u>partida</u> e o <u>destino</u> são apenas <u>correções</u>. Não devemos considerá-los como conceitos separados. A <u>rota</u> atinge o destino assim que atinge qualquer outro ponto <u>fixo</u>. O avião deve seguir a rota, mas isso significa que ele pode voar tão alto ou tão baixo quanto quiser?
+                        <b>Especialista</b>: Não. A <u>altitude</u> que um avião deve ter em um determinado momento também é estabelecida no <u>plano de voo</u>.
+                        <u>Plano de voo</u>? O que é isso?
+                        <b>Especialista</b>: Antes de sair do aeroporto, os pilotos recebem um <u>plano de voo</u> detalhado que inclui todos os tipos de informações sobre o <u>voo</u>: a <u>rota</u>, <u>altitude</u> de cruzeiro, <u>velocidade</u> de cruzeiro, tipo de <u>avião</u>, até informações sobre os tripulantes.
+                        <b>Desenvolvedor</b>: Hmm, o <u>plano de voo</u> parece muito importante para mim. Vamos incluí-lo no modelo.
                     </p>
                 </article>
             </main>
