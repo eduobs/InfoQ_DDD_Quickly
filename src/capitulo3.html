@@ -71,6 +71,74 @@
                         mais um mapeamento entre o modelo e o código. O resultado é que os modelos de análise são logo
                         abandonados após o início da codificação.
                     </p>
+                    <p>
+                        Um dos principais problemas com essa abordagem é que os analistas não podem prever alguns dos
+                        defeitos em seu modelo e todas as complexidades do domínio. Os analistas podem ter entrado em
+                        muitos detalhes com alguns dos componentes do modelo e não detalharam suficientemente outros.
+                        Detalhes muito importantes são descobertos durante o processo de design e implementação. Um
+                        modelo que seja verdadeiro para o domínio pode ter sérios problemas com a persistência do objeto
+                        ou comportamento de desempenho inaceitável.
+                    </p>
+                    <p>
+                        Os desenvolvedores serão forçados a tomar algumas decisões por conta própria e farão alterações
+                        no design para resolver um problema real que não foi considerado quando o modelo foi criado.
+                        Eles criam um design que se distancia do modelo, tornando-o menos relevante.
+                    </p>
+                    <p>
+                        Se os analistas trabalharem de forma independente, eles acabarão criando um modelo. Quando esse
+                        modelo é passado para os projetistas, parte do conhecimento dos analistas sobre o domínio e o
+                        modelo é perdido. Embora o modelo possa ser expresso em diagramas e escrita, é provável que os
+                        designers não compreendam todo o significado do modelo, ou os relacionamentos entre alguns
+                        objetos ou seu comportamento. Existem detalhes em um modelo que não são facilmente expressos em
+                        um diagrama, e podem não ser totalmente apresentados mesmo por escrito. Os desenvolvedores terão
+                        dificuldade em entendê-los. Em alguns casos, eles farão algumas suposições sobre o comportamento
+                        pretendido, e é possível que façam as erradas, resultando no funcionamento incorreto do
+                        programa.
+                    </p>
+                    <p>
+                        Os analistas têm suas próprias reuniões fechadas onde muitas coisas são discutidas sobre o
+                        domínio e há muito compartilhamento de conhecimento. Eles criam um modelo que deveria conter
+                        todas essas informações de forma condensada, e os desenvolvedores têm que assimilar tudo isso
+                        lendo os documentos fornecidos a eles. Seria muito mais produtivo se os desenvolvedores pudessem
+                        participar das reuniões de analistas e assim terem uma visão clara e completa do domínio e do
+                        modelo antes de começarem a projetar o código.
+                    </p>
+                    <p>
+                        Uma abordagem melhor é relacionar de perto a modelagem e o design de domínio. O modelo deve ser
+                        construído de olho no software e nas considerações de projeto. Os desenvolvedores devem ser
+                        incluídos no processo de modelagem. A ideia principal é escolher um modelo que possa ser
+                        adequadamente expresso em software, para que o processo de projeto seja direto e baseado no
+                        modelo. Relacionar firmemente o código a um modelo subjacente dá significado ao código e torna o
+                        modelo relevante.
+                    </p>
+                    <p>
+                        Envolver os desenvolvedores fornece feedback. Ele garante que o modelo possa ser implementado em
+                        software. Se algo está errado, é identificado em um estágio inicial e o problema pode ser
+                        facilmente corrigido.
+                    </p>
+                    <p>
+                        Aqueles que escrevem o código devem conhecer muito bem o modelo e devem se sentir responsáveis
+                        por sua integridade. Eles devem perceber que uma mudança no código implica uma mudança no
+                        modelo; caso contrário, eles irão refatorar o código até o ponto em que ele não mais expresse o
+                        modelo original. Se o analista se desvincular do processo de implementação, logo perderá a
+                        preocupação com as limitações introduzidas pelo desenvolvimento. O resultado é um modelo que não
+                        é prático.
+                    </p>
+                    <p>
+                        Qualquer pessoa técnica que contribua para o modelo deve passar algum tempo tocando o código,
+                        qualquer que seja o papel principal que desempenha no projeto. Qualquer pessoa responsável por
+                        alterar o código deve aprender a expressar um modelo por meio do código. Todo desenvolvedor deve
+                        estar envolvido em algum nível de discussão sobre o modelo e ter contato com especialistas do
+                        domínio. Aqueles que contribuem de diferentes maneiras devem conscientemente engajar aqueles que
+                        tocam o código em uma troca dinâmica de ideias-modelo por meio da Linguagem Ubíqua.
+                    </p>
+                    <p>
+                        Se o design, ou alguma parte central dele, não for mapeado para o modelo de domínio, esse modelo
+                        é de pouco valor e a correção do software é suspeita. Ao mesmo tempo, mapeamentos complexos
+                        entre modelos e funções de design são difíceis de entender e, na prática, impossíveis de manter
+                        à medida que o design muda. Abre-se uma divisão mortal entre análise e design, de modo que a
+                        percepção obtida em cada uma dessas atividades não se alimente à outra.
+                    </p>
                 </article>
             </main>
         </main>
