@@ -134,45 +134,45 @@
                     </p>
                     <p>
                         <b>Desenvolvedor</b>: Queremos monitorar o tráfego aéreo. Por onde começamos?
-                        <br />
+                        <br /><br />
                         <b>Especialista</b>: Vamos começar com o básico. Todo esse tráfego é feito de <u>aviões</u>.
                         Cada avião decola de um local de <u>partida</u> e pousa em um local de <u>destino</u>.
-                        <br />
+                        <br /><br />
                         <b>Desenvolvedor</b>: Isso é fácil. Quando ele voa, o avião pode escolher qualquer caminho aéreo
                         que os pilotos gostem? Cabe a eles decidir qual caminho devem seguir, desde que cheguem ao
                         destino?
-                        <br />
+                        <br /><br />
                         <b>Especialista</b>: Ah, não. Os pilotos recebem uma <u>rota</u> que devem seguir. E eles devem
                         ficar nessa rota o mais próximo possível.
-                        <br />
+                        <br /><br />
                         <b>Desenvolvedor</b>: Estou pensando nessa <u>rota</u> como um caminho 3D no ar. Se usarmos um
                         sistema cartesiano de coordenadas, a <u>rota</u> é simplesmente uma série de pontos 3D.
-                        <br />
+                        <br /><br />
                         <b>Especialista</b>: Eu não acho. Não vemos a <u>rota</u> dessa forma. A <u>rota</u> é, na
                         verdade, a projeção no solo da trajetória aérea esperada do avião. A <u>rota</u> passa por uma
                         série de pontos no solo determinados por sua <u>latitude</u> e <u>longitude</u>.
-                        <br />
+                        <br /><br />
                         <b>Desenvolvedor</b>: OK, então vamos chamar cada um desses pontos de correção, porque é um
                         ponto <u>fixo</u> da superfície da Terra. E usaremos então uma série de pontos 2D para descrever
                         o caminho. E, a propósito, a <u>partida</u> e o <u>destino</u> são apenas <u>correções</u>. Não
                         devemos considerá-los como conceitos separados. A <u>rota</u> atinge o destino assim que atinge
                         qualquer outro ponto <u>fixo</u>. O avião deve seguir a rota, mas isso significa que ele pode
                         voar tão alto ou tão baixo quanto quiser?
-                        <br />
+                        <br /><br />
                         <b>Especialista</b>: Não. A <u>altitude</u> que um avião deve ter em um determinado momento
                         também é estabelecida no <u>plano de voo</u>.
-                        <br />
+                        <br /><br />
                         <u>Plano de voo</u>? O que é isso?
-                        <br />
+                        <br /><br />
                         <b>Especialista</b>: Antes de sair do aeroporto, os pilotos recebem um <u>plano de voo</u>
                         detalhado que inclui todos os tipos de informações sobre o <u>voo</u>: a <u>rota</u>,
                         <u>altitude</u> de cruzeiro, <u>velocidade</u> de cruzeiro, tipo de <u>avião</u>, até
                         informações sobre os tripulantes.
-                        <br />
+                        <br /><br />
                         <b>Desenvolvedor</b>: Hmm, o <u>plano de voo</u> parece muito importante para mim. Vamos
                         incluí-lo no modelo.
-                        <br />
-                        <img src="assets/02-01.JPG" title="img0201" />
+                        <br /><br />
+                        <img src="assets/02-01.JPG" width="531" title="img0201" />
                         <br />
                         <b>Desenvolvedor</b>: Melhor assim. Agora que estou olhando para isso, percebo algo. Quando
                         estamos monitorando o tráfego aéreo, não estamos realmente interessados nos aviões em si, se são
@@ -194,7 +194,7 @@
                         nosso próprio jargão durante essas sessões o mínimo possível, e devemos usar a Linguagem Ubíqua
                         porque isso nos ajuda a nos comunicar com clareza e precisão.
                     </p>
-                    <img src="assets/02-02.JPG" title="img0202" />
+                    <img src="assets/02-02.JPG" width="531" title="img0202" />
                     <p>
                         Também é altamente recomendável que os desenvolvedores implementem os principais conceitos do
                         modelo no código. Uma classe pode ser escrita para Route e outra para Fix. A classe Fix pode
@@ -220,9 +220,6 @@
                         surgem novas ideias e o diagrama é modificado para refletir a mudança conceitual.
                     </p>
                     <p>
-
-
-
                         Diagramas UML são muito úteis quando o número de elementos envolvidos é pequeno. Mas UML pode
                         crescer como cogumelos depois de uma boa chuva de verão. O que você faz quando tem centenas de
                         aulas preenchendo uma folha de papel tão longa quanto Mississippi? É difícil de ler até mesmo
