@@ -139,6 +139,55 @@
                         à medida que o design muda. Abre-se uma divisão mortal entre análise e design, de modo que a
                         percepção obtida em cada uma dessas atividades não se alimente à outra.
                     </p>
+                    <p>
+                        Projete uma parte do sistema de software para refletir o modelo de domínio de maneira muito
+                        literal, de modo que o mapeamento seja óbvio. Revisite o modelo e modifique-o para ser
+                        implementado de forma mais natural no software, mesmo que você procure fazê-lo refletir uma
+                        visão mais profunda do domínio. Exija um modelo único que atenda bem a ambos os propósitos, além
+                        de suportar uma Linguagem Ubíqua fluente.
+                    </p>
+                    <p>
+                        Extrair do modelo a terminologia usada no projeto e a atribuição básica de responsabilidades. O
+                        código torna-se uma expressão do modelo, portanto, uma mudança no código pode ser uma mudança no
+                        modelo. Seu efeito deve se propagar pelo resto das atividades do projeto de acordo.
+                    </p>
+                    <p>
+                        Amarrar firmemente a implementação a um modelo geralmente requer ferramentas de desenvolvimento
+                        de software e linguagens que suportem um paradigma de modelagem, como programação orientada a
+                        objetos.
+                    </p>
+                    <p>
+                        A programação orientada a objetos é adequada para implementação de modelos porque ambas são
+                        baseadas no mesmo paradigma. A programação orientada a objetos fornece classes de objetos e
+                        associações de classes, instâncias de objetos e mensagens entre eles. As linguagens OOP
+                        possibilitam a criação de mapeamentos diretos entre objetos de modelo com seus relacionamentos e
+                        suas contrapartes de programação.
+                    </p>
+                    <p>
+                        As linguagens procedurais oferecem suporte limitado para design orientado por modelo. Essas
+                        linguagens não oferecem as construções necessárias para implementar os principais componentes de
+                        um modelo. Alguns dizem que OOP pode ser feito com uma linguagem procedural como C e, de fato,
+                        algumas das funcionalidades podem ser reproduzidas dessa maneira. Os objetos podem ser simulados
+                        como estruturas de dados. Tais estruturas não contêm o comportamento do objeto, e isso deve ser
+                        adicionado separadamente como funções. O significado de tais dados existe apenas na mente do
+                        desenvolvedor, porque o código em si não é explícito. Um programa escrito em uma linguagem
+                        procedural geralmente é percebido como um conjunto de funções, uma chamando a outra e
+                        trabalhando juntas para alcançar um determinado resultado. Tal programa não pode facilmente
+                        encapsular conexões conceituais, tornando o mapeamento entre domínio e código difícil de ser
+                        realizado.
+                    </p>
+                    <p>
+                        Alguns domínios específicos, como a matemática, podem ser facilmente modelados e implementados
+                        usando programação procedural, porque muitas teorias matemáticas são simplesmente abordadas
+                        usando chamadas de função e estruturas de dados, pois trata-se principalmente de cálculos.
+                        Domínios mais complexos não são apenas um conjunto de conceitos abstratos envolvendo
+                        computações, e não podem ser reduzidos a um conjunto de algoritmos, de modo que linguagens
+                        procedurais ficam aquém da tarefa de expressar os respectivos modelos. Por esse motivo, a
+                        programação procedural não é recomendada para projetos orientados a modelos.
+                    </p>
+
+                    <h2>Os Blocos De Construção De Um Model-Driven Design</h2>
+                    <p></p>
                 </article>
             </main>
         </main>
