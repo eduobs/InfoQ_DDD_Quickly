@@ -187,7 +187,48 @@
                     </p>
 
                     <h2>Os Blocos De Construção De Um Model-Driven Design</h2>
-                    <p></p>
+                    <p>
+                        As seções a seguir deste capítulo apresentarão os padrões mais importantes a serem usados no
+                        projeto orientado a modelos. O objetivo desses padrões é apresentar alguns dos elementos-chave
+                        da modelagem de objetos e design de software do ponto de vista do design orientado a domínio. O
+                        diagrama a seguir é um mapa dos padrões apresentados e as relações entre eles.
+                    </p>
+                    <img src="assets/03-01.JPG" width="531" title="img0301" />
+                    <h2>Arquitetura em Camadas</h2>
+                    <img src="assets/03-02.JPG" width="531" title="img0302" />
+                    <p>
+                        Quando criamos um aplicativo de software, grande parte do aplicativo não está diretamente
+                        relacionado ao domínio, mas faz parte da infraestrutura ou atende ao próprio software. É
+                        possível e ok que a parte de domínio de um aplicativo seja bem pequena em comparação com o
+                        resto, já que um aplicativo típico contém muito código relacionado ao acesso ao banco de dados,
+                        acesso a arquivos ou rede, interfaces de usuário, etc.
+                    </p>
+                    <p>
+                        Em um programa orientado a objetos, a interface do usuário, o banco de dados e outros códigos de
+                        suporte geralmente são gravados diretamente nos objetos de negócios. Lógica de negócios
+                        adicional é incorporada no comportamento de widgets de interface do usuário e scripts de banco
+                        de dados. Isso às vezes acontece porque é a maneira mais fácil de fazer as coisas funcionarem
+                        rapidamente.
+                    </p>
+                    <p>
+                        No entanto, quando o código relacionado ao domínio é misturado com as outras camadas, torna-se
+                        extremamente difícil ver e pensar. Alterações superficiais na interface do usuário podem
+                        realmente alterar a lógica de negócios. Alterar uma regra de negócios pode exigir rastreamento
+                        meticuloso do código da interface do usuário, código do banco de dados ou outros elementos do
+                        programa. A implementação de objetos coerentes e orientados por modelo torna-se impraticável. O
+                        teste automatizado é complicado. Com todas as tecnologias e lógicas envolvidas em cada
+                        atividade, um programa deve ser mantido muito simples ou se torna impossível de entender.
+                    </p>
+                    <p>
+                        <b>Portanto</b>, particione um programa complexo em LAYERS. Desenvolva um design dentro de cada
+                        LAYER que seja coeso e que dependa apenas das camadas abaixo. Siga os padrões de arquitetura
+                        padrão para fornecer acoplamento flexível às camadas acima. Concentre todo o código relacionado
+                        ao modelo de domínio em uma camada e isole-o da interface do usuário, do aplicativo e do código
+                        de infraestrutura. Os objetos de domínio, livres da responsabilidade de se exibir, armazenar,
+                        gerenciar tarefas do aplicativo e assim por diante, podem ser focados em expressar o modelo de
+                        domínio. Isso permite que um modelo evolua para ser rico e claro o suficiente para capturar o
+                        conhecimento essencial do negócio e colocá-lo em prática.
+                    </p>
                 </article>
             </main>
         </main>
