@@ -229,6 +229,27 @@
                         domínio. Isso permite que um modelo evolua para ser rico e claro o suficiente para capturar o
                         conhecimento essencial do negócio e colocá-lo em prática.
                     </p>
+                    <p>
+                        Uma solução de arquitetura comum para projetos orientados por domínio contém quatro camadas conceituais:
+                    </p>
+                    <table>
+                        <tr>
+                            <td><b>User Interface (Camada de Apresentação)</b></td>
+                            <td>Responsável por apresentar informações ao usuário e interpretar comandos do usuário.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Application Layer</b></td>
+                            <td>Esta é uma camada fina que coordena a atividade do aplicativo. Ele não contém lógica de negócios. Ele não retém o estado dos objetos de negócios, mas pode reter o estado do progresso de uma tarefa do aplicativo.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Domain Layer</b></td>
+                            <td>Esta camada contém informações sobre o domínio. Este é o coração do software empresarial. O estado dos objetos de negócios é mantido aqui. A persistência dos objetos de negócios e possivelmente seu estado são delegados à camada de infraestrutura.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Infrastructure Layer</b></td>
+                            <td>Esta camada atua como uma biblioteca de suporte para todas as outras camadas. Ele fornece comunicação entre camadas, implementa persistência para objetos de negócios, contém bibliotecas de suporte para a camada de interface do usuário, etc.</td>
+                        </tr>
+                    </table>
                 </article>
             </main>
         </main>
