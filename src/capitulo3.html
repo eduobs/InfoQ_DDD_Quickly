@@ -359,35 +359,102 @@
                     <br />
                     <h2>Value Objects</h2>
                     <p>
-
+                        Discutimos entidades e a importância de reconhecer entidades no início da fase de modelagem.
+                        Entidades são objetos necessários em um modelo de domínio. Devemos tornar todos os objetos
+                        entidades? Todo objeto deve ter uma identidade?
                     </p>
                     <p>
-                        
+                        Podemos ser tentados a transformar todos os objetos em entidades. As entidades podem ser
+                        rastreadas. Mas o rastreamento e a criação de identidade têm um custo. Precisamos garantir que
+                        cada instância tenha sua identidade exclusiva, e rastrear a identidade não é muito simples. É
+                        preciso muita reflexão para decidir o que faz uma identidade, porque uma decisão errada levaria
+                        a objetos com a mesma identidade, algo que não é desejado. Há também implicações de desempenho
+                        em fazer com que todos os objetos sejam entidades. Tem que haver uma instância para cada objeto.
+                        Se Cliente for um objeto de entidade, uma instância desse objeto, representando um cliente de
+                        banco específico, não poderá ser reutilizada para operações de conta correspondentes a outros
+                        clientes. O resultado é que tal instância deve ser criada para cada cliente. Isso pode resultar
+                        na degradação do desempenho do sistema ao lidar com milhares de instâncias.
                     </p>
                     <p>
-                        
+                        Vamos considerar um aplicativo de desenho. O usuário é apresentado a uma tela e ele pode
+                        desenhar quaisquer pontos e linhas de qualquer espessura, estilo e cor. É útil criar uma classe
+                        de objeto chamada Point, e o programa pode criar uma instância dessa classe para cada ponto na
+                        tela. Tal ponto conteria dois atributos associados a coordenadas de canvas ou tela. É necessário
+                        considerar cada ponto como tendo uma identidade? Ela tem continuidade? Parece que a única coisa
+                        que
+                        importa para tal objeto são suas coordenadas.
                     </p>
                     <p>
-                        
+                        Há casos em que precisamos conter alguns atributos de um elemento de domínio. Não estamos
+                        interessados em qual objeto ele é, mas em quais atributos ele possui. Um objeto que é usado para
+                        descrever certos aspectos de um domínio, e que não tem identidade, é chamado de Objeto de Valor.
                     </p>
                     <p>
-                        
+                        É necessário distinguir entre Objetos de Entidade e Objetos de Valor. Não é útil fazer todas as
+                        entidades de objeto por causa da uniformidade. Na verdade, é recomendado selecionar como
+                        entidades apenas os objetos que estão de acordo com a definição da entidade. E faça com que o
+                        resto dos objetos sejam Value Objects. (Apresentaremos outro tipo de objeto na próxima seção,
+                        mas
+                        assumiremos que temos apenas objetos de entidade e objetos de valor por enquanto.) Isso
+                        simplificará o design e haverá algumas outras consequências positivas.
                     </p>
                     <p>
-                        
+                        Sem identidade, os objetos de valor podem ser facilmente criados e descartados. Ninguém se
+                        preocupa em criar uma identidade, e o coletor de lixo cuida do objeto quando não é mais
+                        referenciado por nenhum outro objeto. Isso simplifica muito o design.
                     </p>
                     <p>
-                        
+                        É altamente recomendável que os objetos de valor sejam imutáveis. Eles são criados com um
+                        construtor e nunca modificados durante sua vida útil. Quando você deseja um valor diferente para
+                        o objeto, basta criar outro. Isso tem consequências importantes para o design. Sendo imutáveis
+                        ​​e sem identidade, os Objetos de Valor podem ser compartilhados. Isso pode ser imperativo para
+                        alguns projetos. Objetos imutáveis ​​são compartilháveis ​​com importantes implicações de
+                        desempenho. Eles também manifestam integridade, ou seja, integridade de dados. Imagine o que
+                        significaria compartilhar um objeto que não é imutável. Um sistema de reservas de viagens aéreas
+                        poderia criar objetos para cada voo. Um dos atributos pode ser o código de voo. Um cliente
+                        reserva um voo para um determinado destino. Outro cliente quer reservar o mesmo voo. O sistema
+                        opta por reutilizar o objeto que contém o código de voo, pois trata-se do mesmo voo. Entretanto,
+                        o cliente muda de ideias e opta por um voo diferente. O sistema altera o código de voo porque
+                        este não é imutável. O resultado é que o código de voo do primeiro cliente também muda.
                     </p>
                     <p>
-                        
+                        Uma regra de ouro é: se os objetos de valor forem compartilháveis, eles devem ser imutáveis.
+                        Objetos de valor devem ser mantidos finos e simples. Quando um objeto de valor é necessário por
+                        outra parte, ele pode ser simplesmente passado por valor, ou uma cópia dele pode ser criada e
+                        fornecida. Fazer uma cópia de um Value Object é simples e geralmente sem consequências. Se não
+                        houver identidade, você pode fazer quantas cópias desejar e destruir todas quando necessário.
+                    </p>
+                    <p>
+                        Os Objetos de Valor podem conter outros Objetos de Valor e podem até conter referências a
+                        Entidades. Embora os objetos de valor sejam usados para simplesmente conter atributos de um
+                        objeto de domínio, isso não significa que ele deva conter uma longa lista com todos os
+                        atributos. Os atributos podem ser agrupados em diferentes objetos. Os atributos escolhidos para
+                        compor um objeto de valor devem formar um todo conceitual. Um cliente está associado a um nome,
+                        uma rua, uma cidade e um estado. É melhor conter as informações de endereço em um objeto
+                        separado, e o objeto cliente conterá uma referência a tal objeto. Rua, cidade, estado devem ter
+                        um objeto próprio, o Endereço, pois eles pertencem conceitualmente um ao outro, ao invés de
+                        serem atributos separados do cliente, como mostra o diagrama abaixo.
                     </p>
                     <img src="assets/03-03.JPG" width="531" title="img0303" />
+                    <br />
+                    <h2>Services</h2>
                     <p>
-                        
-                    </p>
-                    <p>
-                        
+                        Quando analisamos o domínio e tentamos definir os principais objetos que compõem o modelo,
+                        descobrimos que alguns aspectos do domínio não são facilmente mapeados para objetos. Os objetos
+                        são geralmente considerados como tendo atributos, um estado interno que é gerenciado pelo objeto
+                        e exibem um comportamento. Quando desenvolvemos a linguagem ubíqua, os conceitos-chave do
+                        domínio são introduzidos na linguagem e os substantivos da linguagem são facilmente mapeados
+                        para objetos. Os verbos da língua, associados aos seus substantivos correspondentes, tornam-se
+                        parte do comportamento desses objetos. Mas há algumas ações no domínio, alguns verbos, que
+                        parecem não pertencer a nenhum objeto. Eles representam um importante comportamento do domínio,
+                        portanto, não podem ser negligenciados ou simplesmente incorporados em algumas das Entidades ou
+                        Objetos de Valor. Adicionar tal comportamento a um objeto estragaria o objeto, fazendo-o
+                        representar uma funcionalidade que não lhe pertence. No entanto, usando uma linguagem orientada
+                        a objetos, temos que usar um objeto para essa finalidade. Não podemos ter uma função separada
+                        por conta própria. Tem que ser anexado a algum objeto. Muitas vezes, esse tipo de comportamento
+                        funciona em vários objetos, talvez de diferentes classes. Por exemplo, para transferir dinheiro
+                        de uma conta para outra; essa função deve estar na conta de envio ou na conta de recebimento?
+                        Parece tão deslocado em qualquer um.
                     </p>
                 </article>
             </main>
