@@ -129,3 +129,13 @@ footer p{
 footer a,footer a:hover,footer a:visited{
     color:#bbb
 }
+
+.coluna-titulo { 
+    border-bottom: 1px solid white; 
+    text-align: center;
+}
+
+.coluna-conteudo { 
+    border-bottom: 1px solid white; 
+    vertical-align:text-top;
+}
