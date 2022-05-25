@@ -230,26 +230,132 @@
                         conhecimento essencial do negócio e colocá-lo em prática.
                     </p>
                     <p>
-                        Uma solução de arquitetura comum para projetos orientados por domínio contém quatro camadas conceituais:
+                        Uma solução de arquitetura comum para projetos orientados por domínio contém quatro camadas
+                        conceituais:
                     </p>
                     <table>
                         <tr>
                             <td class="coluna-titulo"><b>User Interface (Camada de Apresentação)</b></td>
-                            <td class="coluna-conteudo">Responsável por apresentar informações ao usuário e interpretar comandos do usuário.</td>
+                            <td class="coluna-conteudo">Responsável por apresentar informações ao usuário e interpretar
+                                comandos do usuário.</td>
                         </tr>
                         <tr>
                             <td class="coluna-titulo"><b>Application Layer</b></td>
-                            <td class="coluna-conteudo">Esta é uma camada fina que coordena a atividade do aplicativo. Ele não contém lógica de negócios. Ele não retém o estado dos objetos de negócios, mas pode reter o estado do progresso de uma tarefa do aplicativo.</td>
+                            <td class="coluna-conteudo">Esta é uma camada fina que coordena a atividade do aplicativo.
+                                Ele não contém lógica de negócios. Ele não retém o estado dos objetos de negócios, mas
+                                pode reter o estado do progresso de uma tarefa do aplicativo.</td>
                         </tr>
                         <tr>
                             <td class="coluna-titulo"><b>Domain Layer</b></td>
-                            <td class="coluna-conteudo">Esta camada contém informações sobre o domínio. Este é o coração do software empresarial. O estado dos objetos de negócios é mantido aqui. A persistência dos objetos de negócios e possivelmente seu estado são delegados à camada de infraestrutura.</td>
+                            <td class="coluna-conteudo">Esta camada contém informações sobre o domínio. Este é o coração
+                                do software empresarial. O estado dos objetos de negócios é mantido aqui. A persistência
+                                dos objetos de negócios e possivelmente seu estado são delegados à camada de
+                                infraestrutura.</td>
                         </tr>
                         <tr>
                             <td class="coluna-titulo"><b>Infrastructure Layer</b></td>
-                            <td class="coluna-conteudo">Esta camada atua como uma biblioteca de suporte para todas as outras camadas. Ele fornece comunicação entre camadas, implementa persistência para objetos de negócios, contém bibliotecas de suporte para a camada de interface do usuário, etc.</td>
+                            <td class="coluna-conteudo">Esta camada atua como uma biblioteca de suporte para todas as
+                                outras camadas. Ele fornece comunicação entre camadas, implementa persistência para
+                                objetos de negócios, contém bibliotecas de suporte para a camada de interface do
+                                usuário, etc.</td>
                         </tr>
                     </table>
+                    <br />
+                    <p>
+                        É importante dividir uma aplicação em camadas separadas e estabelecer regras de interação entre
+                        as camadas. Se o código não estiver claramente separado em camadas, logo ficará tão emaranhado
+                        que se tornará muito difícil gerenciar as alterações. Uma simples alteração em uma seção do
+                        código pode ter resultados inesperados e indesejáveis em outras seções. A camada de domínio deve
+                        ser focada em questões de domínio principal. Não deve estar envolvido em atividades de
+                        infraestrutura. A interface do usuário não deve estar estreitamente conectada à lógica de
+                        negócios nem às tarefas que normalmente pertencem à camada de infraestrutura. Uma camada de
+                        aplicação é necessária em muitos casos. Tem que haver um gerente sobre a lógica de negócios que
+                        supervisiona e coordena a atividade geral do aplicativo.
+                    </p>
+                    <p>
+                        Por exemplo, uma interação típica do aplicativo, domínio e infraestrutura pode ser assim. O
+                        usuário deseja reservar uma rota de voo e solicita que um serviço de aplicativo na camada de
+                        aplicativo o faça. A camada de aplicativo busca os objetos de domínio relevantes da
+                        infraestrutura e invoca métodos relevantes neles, por exemplo, para verificar as margens de
+                        segurança de outros voos já reservados. Uma vez que os objetos de domínio tenham feito todas as
+                        verificações e atualizado seu status para “decidido”, o serviço de aplicativo persiste os
+                        objetos na infraestrutura.
+                    </p>
+                    <br />
+                    <h2>Entidades</h2>
+                    <p>
+                        Há uma categoria de objetos que parecem ter uma identidade, que permanece a mesma em todos os
+                        estados do software. Para esses objetos não são os atributos que importam, mas um fio de
+                        continuidade e identidade, que abrange a vida de um sistema e pode se estender além dele. Tais
+                        objetos são chamados de Entidades, as linguagens OOP mantêm instâncias de objetos na memória e
+                        associam uma referência ou um endereço de memória para cada objeto. Essa referência é única para
+                        cada objeto em um determinado momento, mas não há garantia de que permanecerá assim por um
+                        período de tempo indefinido. Na verdade o contrário é verdade. Os objetos são constantemente
+                        movidos para fora e de volta à memória, são serializados e enviados pela rede e recriados na
+                        outra extremidade, ou são destruídos. Essa referência, que serve de identidade para o ambiente
+                        de execução do programa, não é a identidade da qual estamos falando. Se houver uma classe que
+                        contenha informações meteorológicas, como temperatura, é bem possível que haja duas instâncias
+                        distintas da respectiva classe, ambas contendo o mesmo valor. Os objetos são perfeitamente
+                        iguais e intercambiáveis ​​entre si, mas possuem referências diferentes. Não são entidades.
+                    </p>
+                    <p>
+                        Se fôssemos implementar o conceito de Pessoa usando um programa de software, provavelmente
+                        criaríamos uma classe Pessoa com uma série de atributos: nome, data de nascimento, local de
+                        nascimento, etc. Algum desses atributos é a identidade da pessoa? ? O nome não pode ser a
+                        identidade porque pode haver mais pessoas com o mesmo nome. Não poderíamos distinguir entre
+                        pessoas com o mesmo nome, se tivéssemos em conta apenas o seu nome. Também não podemos usar data
+                        de nascimento, porque muitas pessoas nascem no mesmo dia. O mesmo se aplica ao local de
+                        nascimento. Um objeto deve ser diferenciado de outros objetos, mesmo que possam ter os mesmos
+                        atributos. A identidade errada pode levar à corrupção de dados.
+                    </p>
+                    <p>
+                        Considere um sistema de contabilidade bancária. Cada conta tem seu próprio número. Uma conta
+                        pode ser identificada com precisão pelo seu número. Esse número permanece inalterado durante
+                        toda a vida útil do sistema e garante a continuidade. O número da conta pode existir como um
+                        objeto na memória ou pode ser destruído na memória e enviado ao banco de dados. Ele também pode
+                        ser arquivado quando a conta é fechada, mas ainda existe em algum lugar, desde que haja algum
+                        interesse em mantê-lo por perto. Não importa que representação seja necessária, o número
+                        permanece o mesmo.
+                    </p>
+                    <p>
+                        Portanto, implementar entidades em software significa criar identidade. Para uma pessoa pode ser
+                        uma combinação de atributos: nome, data de nascimento, local de nascimento, nome dos pais,
+                        endereço atual. O número do Seguro Social também é usado nos EUA para criar identidade. Para uma
+                        conta bancária o número da conta parece ser suficiente para sua identidade. Normalmente a
+                        identidade é um atributo do objeto, uma combinação de atributos, um atributo criado
+                        especialmente para preservar e expressar a identidade, ou mesmo um comportamento. É importante
+                        que dois objetos com identidades diferentes sejam facilmente distinguidos pelo sistema, e dois
+                        objetos com a mesma identidade sejam considerados iguais pelo sistema. Se essa condição não for
+                        atendida, todo o sistema pode ser corrompido.
+                    </p>
+                    <p>
+                        Existem diferentes maneiras de criar uma identidade única para cada objeto. O ID pode ser gerado
+                        automaticamente por um módulo e usado internamente no software sem torná-lo visível para o
+                        usuário. Pode ser uma chave primária em uma tabela de banco de dados, que tem a garantia de ser
+                        exclusiva no banco de dados. Sempre que o objeto é recuperado do banco de dados, seu ID é
+                        recuperado e recriado na memória. O ID pode ser criado pelo usuário como acontece com os códigos
+                        associados aos aeroportos. Cada aeroporto tem um identificador de string exclusivo que é
+                        reconhecido internacionalmente e usado pelas agências de viagens em todo o mundo para
+                        identificar aeroportos em seus horários de viagem. Outra solução é usar os atributos do objeto
+                        para criar o ID, e quando isso não for suficiente, outro atributo pode ser adicionado para
+                        ajudar a identificar o respectivo objeto.
+                    </p>
+                    <p>
+                        Quando um objeto é distinguido por sua identidade, em vez de seus atributos, torne isso primário
+                        em sua definição no modelo. Mantenha a definição de classe simples e focada na continuidade e
+                        identidade do ciclo de vida. Defina um meio de distinguir cada objeto, independentemente de sua
+                        forma ou história. Esteja alerta para os requisitos que exigem objetos correspondentes por
+                        atributos. Defina uma operação que garanta a produção de um resultado exclusivo para cada
+                        objeto, possivelmente anexando um símbolo com garantia de exclusividade. Este meio de
+                        identificação pode vir de fora, ou pode ser um identificador arbitrário criado por e para o
+                        sistema, mas deve corresponder às distinções de identidade no modelo. O modelo deve definir o
+                        que significa ser a mesma coisa.
+                    </p>
+                    <p>
+                        As entidades são objetos importantes de um modelo de domínio e devem ser consideradas desde o
+                        início do processo de modelagem. Também é importante determinar se um objeto precisa ser uma
+                        entidade ou não, o que é discutido no próximo padrão.
+                    </p>
                 </article>
             </main>
         </main>
