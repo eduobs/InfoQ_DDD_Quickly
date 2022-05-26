@@ -448,13 +448,51 @@
                         parte do comportamento desses objetos. Mas há algumas ações no domínio, alguns verbos, que
                         parecem não pertencer a nenhum objeto. Eles representam um importante comportamento do domínio,
                         portanto, não podem ser negligenciados ou simplesmente incorporados em algumas das Entidades ou
-                        Objetos de Valor. Adicionar tal comportamento a um objeto estragaria o objeto, fazendo-o
-                        representar uma funcionalidade que não lhe pertence. No entanto, usando uma linguagem orientada
-                        a objetos, temos que usar um objeto para essa finalidade. Não podemos ter uma função separada
-                        por conta própria. Tem que ser anexado a algum objeto. Muitas vezes, esse tipo de comportamento
-                        funciona em vários objetos, talvez de diferentes classes. Por exemplo, para transferir dinheiro
-                        de uma conta para outra; essa função deve estar na conta de envio ou na conta de recebimento?
-                        Parece tão deslocado em qualquer um.
+                        Objetos de Valor.
+                        Adicionar tal comportamento a um objeto estragaria o objeto, fazendo-o representar uma
+                        funcionalidade que não lhe pertence. No entanto, usando uma linguagem orientada a objetos, temos
+                        que usar um objeto para essa finalidade.
+                        Não podemos ter uma função separada por conta própria. Tem que ser anexado a algum objeto.
+                        Muitas vezes, esse tipo de comportamento funciona em vários objetos, talvez de diferentes
+                        classes.
+                        Por exemplo, para transferir dinheiro de uma conta para outra; essa função deve estar na conta
+                        de envio ou na conta de recebimento? Parece tão deslocado em qualquer um.
+                    </p>
+                    <p>
+                        Quando tal comportamento é reconhecido no domínio, a melhor prática é declará-lo como um Serviço. Esse objeto não possui um estado interno e seu objetivo é simplesmente fornecer funcionalidade para o domínio. A assistência fornecida por um Serviço pode ser significativa, e um Serviço pode agrupar funcionalidades relacionadas que atendem às Entidades e aos Objetos de Valor. É muito melhor declarar o Serviço explicitamente, pois cria uma distinção clara no domínio, encapsula um conceito. Cria confusão para incorporar tal funcionalidade em uma Entidade ou Objeto de Valor porque não ficará claro o que esses objetos representam.
+                    </p>
+                    <p>
+                        Um Serviço não deve substituir a operação que normalmente pertence a objetos de domínio. Não devemos criar um Serviço para toda operação necessária. Mas quando tal operação se destaca como um conceito importante no domínio, deve ser criado um Serviço para ela. Existem três características de um Serviço:
+                        <br />
+                        <ol class="decimal">
+                            <li>A operação realizada pelo Serviço refere-se a um conceito de domínio que não pertence naturalmente a uma Entidade ou Objeto de Valor;</li>
+                            <li>A operação realizada refere-se a outros objetos do domínio;</li>
+                            <li>A operação é sem estado;</li>
+                        </ol>
+                    </p>
+                    <p>
+                        
+                    </p>
+                    <p>
+                        
+                    </p>
+                    <p>
+                        
+                    </p>
+                    <p>
+                        
+                    </p>
+                    <p>
+                        
+                    </p>
+                    <p>
+                        
+                    </p>
+                    <p>
+                        
+                    </p>
+                    <p>
+                        
                     </p>
                 </article>
             </main>

@@ -114,6 +114,9 @@ ul li span.post-date,ul li span.other-author{
     float:right;
     color:#bbb
 }
+ol.decimal {
+	list-style-type: decimal;
+}
 article span.post-date{
     color:#bbb
 }
