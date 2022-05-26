@@ -459,40 +459,126 @@
                         de envio ou na conta de recebimento? Parece tão deslocado em qualquer um.
                     </p>
                     <p>
-                        Quando tal comportamento é reconhecido no domínio, a melhor prática é declará-lo como um Serviço. Esse objeto não possui um estado interno e seu objetivo é simplesmente fornecer funcionalidade para o domínio. A assistência fornecida por um Serviço pode ser significativa, e um Serviço pode agrupar funcionalidades relacionadas que atendem às Entidades e aos Objetos de Valor. É muito melhor declarar o Serviço explicitamente, pois cria uma distinção clara no domínio, encapsula um conceito. Cria confusão para incorporar tal funcionalidade em uma Entidade ou Objeto de Valor porque não ficará claro o que esses objetos representam.
+                        Quando tal comportamento é reconhecido no domínio, a melhor prática é declará-lo como um
+                        Serviço. Esse objeto não possui um estado interno e seu objetivo é simplesmente fornecer
+                        funcionalidade para o domínio. A assistência fornecida por um Serviço pode ser significativa, e
+                        um Serviço pode agrupar funcionalidades relacionadas que atendem às Entidades e aos Objetos de
+                        Valor. É muito melhor declarar o Serviço explicitamente, pois cria uma distinção clara no
+                        domínio, encapsula um conceito. Cria confusão para incorporar tal funcionalidade em uma Entidade
+                        ou Objeto de Valor porque não ficará claro o que esses objetos representam.
                     </p>
                     <p>
-                        Um Serviço não deve substituir a operação que normalmente pertence a objetos de domínio. Não devemos criar um Serviço para toda operação necessária. Mas quando tal operação se destaca como um conceito importante no domínio, deve ser criado um Serviço para ela. Existem três características de um Serviço:
+                        Um Serviço não deve substituir a operação que normalmente pertence a objetos de domínio. Não
+                        devemos criar um Serviço para toda operação necessária. Mas quando tal operação se destaca como
+                        um conceito importante no domínio, deve ser criado um Serviço para ela. Existem três
+                        características de um Serviço:
                         <br />
-                        <ol class="decimal">
-                            <li>A operação realizada pelo Serviço refere-se a um conceito de domínio que não pertence naturalmente a uma Entidade ou Objeto de Valor;</li>
-                            <li>A operação realizada refere-se a outros objetos do domínio;</li>
-                            <li>A operação é sem estado;</li>
-                        </ol>
+                    <ol class="decimal">
+                        <li>A operação realizada pelo Serviço refere-se a um conceito de domínio que não pertence
+                            naturalmente a uma Entidade ou Objeto de Valor;</li>
+                        <li>A operação realizada refere-se a outros objetos do domínio;</li>
+                        <li>A operação é sem estado;</li>
+                    </ol>
                     </p>
                     <p>
-                        
+                        Quando um processo ou transformação significativa no domínio não for uma responsabilidade
+                        natural de uma Entidade ou Objeto de Valor, adicione uma operação ao modelo como uma interface
+                        autônoma declarada como um Serviço. Defina a interface em termos da linguagem do modelo e
+                        certifique-se de que o nome da operação faça parte da Linguagem Ubíqua. Torne o serviço sem
+                        estado.
                     </p>
                     <p>
-                        
+                        Ao usar os Serviços, é importante manter a camada de domínio isolada. É fácil ficar confuso
+                        entre os serviços que pertencem à camada de domínio e os que pertencem à infraestrutura. Também
+                        pode haver serviços na camada de aplicação que adicionam um nível suplementar de complexidade.
+                        Esses serviços são ainda mais difíceis de separar de suas contrapartes que residem na camada de
+                        domínio. Ao trabalhar no modelo e durante a fase de design, precisamos garantir que o nível de
+                        domínio permaneça isolado dos outros níveis.
                     </p>
                     <p>
-                        
+                        Os serviços de aplicativo e de domínio geralmente são construídos sobre Entidades e Valores de
+                        domínio, fornecendo a funcionalidade necessária diretamente relacionada a esses objetos. Decidir
+                        a qual camada um serviço pertence é difícil. Se a operação realizada conceitualmente pertence à
+                        camada de aplicação, então o Serviço deve ser colocado lá. Se a operação é sobre objetos de
+                        domínio e está estritamente relacionada ao domínio, atendendo a uma necessidade de domínio,
+                        então ela deve pertencer à camada de domínio.
                     </p>
                     <p>
-                        
+                        Vamos considerar um exemplo prático, um aplicativo de relatórios da web. Os relatórios utilizam
+                        dados armazenados em um banco de dados e são gerados a partir de templates. O resultado final é
+                        uma página HTML que é mostrada ao usuário em um navegador da web.
                     </p>
                     <p>
-                        
+                        A camada UI é incorporada nas páginas da web e permite que o usuário faça login, selecione o
+                        relatório desejado e clique em um botão para solicitá-lo. A camada de aplicação é uma camada
+                        fina que fica entre a interface do usuário, o domínio e a infraestrutura. Ele interage com a
+                        infraestrutura do banco de dados durante as operações de login e interage com a camada de
+                        domínio quando precisa criar relatórios. A camada de domínio conterá o núcleo do domínio,
+                        objetos diretamente relacionados aos relatórios. Dois desses objetos são Relatório e Modelo, nos
+                        quais os relatórios são baseados. A camada de infraestrutura dará suporte ao acesso ao banco de
+                        dados e ao acesso a arquivos.
                     </p>
                     <p>
-                        
+                        Quando um usuário seleciona um relatório a ser criado, ele seleciona o nome do relatório de uma
+                        lista de nomes. Este é o reportID, uma string. Alguns outros parâmetros são passados, como os
+                        itens mostrados no relatório e o intervalo de tempo dos dados incluídos no relatório. Mas
+                        mencionaremos apenas o reportID para simplificar. Este nome é passado através da camada de
+                        aplicação para a camada de domínio. A camada de domínio é responsável por criar e retornar o
+                        relatório que recebe seu nome. Como os relatórios são baseados em templates, um Serviço poderia
+                        ser criado, e sua finalidade seria obter o template que corresponde a um reportID. Este modelo é
+                        armazenado em um arquivo ou no banco de dados. Não é apropriado colocar tal operação no próprio
+                        objeto Relatório. Também não pertence ao objeto Template. Então, criamos um serviço separado
+                        cujo objetivo é recuperar um modelo de relatório com base no ID do relatório. Este seria um
+                        serviço localizado na camada de domínio. Ele faria uso da infraestrutura de arquivos para
+                        recuperar o modelo do disco.
+                    </p>
+                    <br />
+                    <h2>Módulos</h2>
+                    <p>
+                        Para uma aplicação grande e complexa, o modelo tende a crescer cada vez mais. O modelo chega a
+                        um ponto em que é difícil falar sobre como um todo, e entender as relações e interações entre as
+                        diferentes partes se torna difícil. Por isso, é necessário organizar o modelo em módulos. Os
+                        módulos são usados como um método de organização de conceitos e tarefas relacionadas para
+                        reduzir a complexidade.
                     </p>
                     <p>
-                        
+
                     </p>
                     <p>
-                        
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
                     </p>
                 </article>
             </main>
