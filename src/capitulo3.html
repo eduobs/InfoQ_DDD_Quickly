@@ -542,22 +542,54 @@
                         reduzir a complexidade.
                     </p>
                     <p>
-
+                        Os módulos são amplamente utilizados na maioria dos projetos. É mais fácil obter a imagem de um
+                        modelo grande se você observar os módulos que ele contém e, em seguida, os relacionamentos entre
+                        esses módulos. Depois que a interação entre os módulos é compreendida, pode-se começar a
+                        descobrir os detalhes dentro de um módulo. É uma maneira simples e eficiente de gerenciar a
+                        complexidade.
                     </p>
                     <p>
-
+                        Outra razão para usar módulos está relacionada à qualidade do código. É amplamente aceito que o
+                        código de software deve ter um alto nível de coesão e um baixo nível de acoplamento. Embora a
+                        coesão comece no nível da classe e do método, ela pode ser aplicada no nível do módulo.
+                        Recomenda-se agrupar classes altamente relacionadas em módulos para fornecer a máxima coesão
+                        possível. Existem vários tipos de coesão. Duas das mais utilizadas são a coesão comunicacional e
+                        a coesão funcional. A coesão comunicacional é alcançada quando partes do módulo operam nos
+                        mesmos dados. Faz sentido agrupá-los, pois existe uma forte relação entre eles. A coesão
+                        funcional é alcançada quando todas as partes do módulo trabalham juntas para realizar uma tarefa
+                        bem definida. Este é considerado o melhor tipo de coesão.
                     </p>
                     <p>
-
+                        Usar módulos no projeto é uma maneira de aumentar a coesão e diminuir o acoplamento. Os módulos
+                        devem ser constituídos por elementos que funcional ou logicamente se integrem, garantindo a
+                        coesão. Os módulos devem ter interfaces bem definidas que são acessadas por outros módulos. Em
+                        vez de chamar três objetos de um módulo, é melhor acessar uma interface, pois reduz o
+                        acoplamento. O baixo acoplamento reduz a complexidade e aumenta a capacidade de manutenção. É
+                        mais fácil entender como um sistema funciona quando há poucas conexões entre módulos que
+                        executam tarefas bem definidas, do que quando cada módulo tem muitas conexões com todos os
+                        outros módulos.
                     </p>
                     <p>
-
+                        Escolha Módulos que contem a história do sistema e contenham um conjunto coeso de conceitos.
+                        Isso geralmente resulta em baixo acoplamento entre os módulos, mas se não procurar uma maneira
+                        de alterar o modelo para desembaraçar os conceitos, ou um conceito negligenciado que pode ser a
+                        base de um módulo que reuniria os elementos de maneira significativa. Busque baixo acoplamento
+                        no sentido de conceitos que possam ser entendidos e raciocinados independentemente um do outro.
+                        Refine o modelo até que ele particione de acordo com os conceitos de domínio de alto nível e o
+                        código correspondente também seja desacoplado.
                     </p>
                     <p>
-
+                        Dê nomes aos Módulos que se tornam parte da Linguagem Ubíqua. Os módulos e seus nomes devem
+                        refletir a percepção do domínio.
                     </p>
                     <p>
-
+                        Os designers estão acostumados a criar módulos desde o início. Eles são partes comuns de nossos
+                        projetos. Depois que o papel do módulo é decidido, ele geralmente permanece inalterado, enquanto
+                        as partes internas do módulo podem mudar muito. Recomenda-se ter alguma flexibilidade, e
+                        permitir que os módulos evoluam com o projeto, não devendo ficar congelados. É verdade que a
+                        refatoração de módulo pode ser mais cara do que a refatoração de classe, mas quando um erro de
+                        projeto de módulo é encontrado, é melhor resolvê-lo alterando o módulo do que encontrando
+                        maneiras de contorná-lo.
                     </p>
                     <p>
 
