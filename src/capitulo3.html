@@ -591,17 +591,92 @@
                         projeto de módulo é encontrado, é melhor resolvê-lo alterando o módulo do que encontrando
                         maneiras de contorná-lo.
                     </p>
+                    <br />
+                    <h2>Aggregates</h2>
                     <p>
-
+                        Os três últimos padrões deste capítulo lidarão com um desafio de modelagem diferente,
+                        relacionado ao ciclo de vida dos objetos de domínio. Objetos de domínio passam por um conjunto
+                        de estados durante seu tempo de vida. Eles são criados, colocados na memória e usados em
+                        cálculos, e são destruídos. Em alguns casos, eles são salvos em locais permanentes, como um
+                        banco de dados, de onde podem ser recuperados algum tempo depois, ou podem ser arquivados. Em
+                        algum momento, eles podem ser completamente apagados do sistema, incluindo o banco de dados e o
+                        armazenamento de arquivos.
                     </p>
                     <p>
-
+                        Gerenciar o ciclo de vida de um objeto de domínio constitui um desafio por si só e, se não for
+                        feito corretamente, pode ter um impacto negativo no modelo de domínio. Apresentaremos três
+                        padrões que nos ajudam a lidar com isso. Aggregate é um padrão de domínio usado para definir a
+                        propriedade e os limites do objeto. Factories e Repositories são dois padrões de projeto que nos
+                        ajudam a lidar com a criação e armazenamento de objetos. Vamos começar falando sobre Aggregates.
                     </p>
                     <p>
-
+                        Um modelo pode conter um grande número de objetos de domínio. Não importa quanta consideração
+                        coloquemos no design, acontece que muitos objetos estão associados uns aos outros, criando uma
+                        complexa rede de relacionamentos. Existem vários tipos de associações. Para cada associação
+                        percorrível no modelo, deve haver um mecanismo de software correspondente que a imponha.
+                        Associações reais entre objetos de domínio acabam no código e muitas vezes até no banco de
+                        dados. Uma relação de um para um entre um cliente e a conta bancária aberta em seu nome se
+                        expressa como uma referência entre dois objetos e implica uma relação entre duas tabelas de
+                        banco de dados, a que mantém os clientes e a que mantém as contas.
                     </p>
                     <p>
-
+                        Os desafios dos modelos geralmente não são torná-los completos o suficiente, mas sim torná-los o
+                        mais simples e compreensíveis possível. Na maioria das vezes vale a pena eliminar ou simplificar
+                        as relações do modelo. Isto é, a menos que eles incorporem uma compreensão profunda do domínio.
+                    </p>
+                    <p>
+                        Uma associação um-para-muitos é mais complexa porque envolve muitos objetos que se relacionam.
+                        Esse relacionamento pode ser simplificado transformando-o em uma associação entre um objeto e
+                        uma coleção de outros objetos, embora nem sempre seja possível.
+                    </p>
+                    <p>
+                        Existem associações muitos-para-muitos e um grande número delas é bidireccional. Isso aumenta
+                        muito a complexidade, dificultando bastante o gerenciamento do ciclo de vida desses objetos. O
+                        número de associações deve ser reduzido tanto quanto possível. Em primeiro lugar, as associações
+                        que não são essenciais para o modelo devem ser removidas. Eles podem existir no domínio, mas não
+                        são necessários em nosso modelo, então retire-os. Em segundo lugar, a multiplicidade pode ser
+                        reduzida adicionando uma restrição. Se muitos objetos satisfazem um relacionamento, é possível
+                        que apenas um o faça se a restrição correta for imposta ao relacionamento. Em terceiro lugar,
+                        muitas vezes as associações bidirecionais podem ser transformadas em unidirecionais. Cada carro
+                        tem um motor, e cada motor tem um carro onde funciona. A relação é bidirecional, mas pode ser
+                        facilmente simplificada considerando que o carro tem motor, e não o contrário.
+                    </p>
+                    <p>
+                        Depois de reduzir e simplificar as associações entre objetos, ainda podemos acabar com muitos
+                        relacionamentos. Um sistema bancário armazena e processa dados de clientes. Esses dados incluem
+                        dados pessoais do cliente, como nome, endereço, números de telefone, descrição do trabalho e
+                        dados da conta: número da conta, saldo, operações realizadas etc. todas as referências são
+                        removidas. Se muitos objetos contêm essas referências, é difícil garantir que todos sejam
+                        removidos. Além disso, quando alguns dados são alterados para um cliente, o sistema precisa
+                        certificar-se de que eles sejam atualizados adequadamente em todo o sistema e a integridade dos
+                        dados seja garantida. Isso geralmente é deixado para ser abordado no nível do banco de dados. As
+                        transações são usadas para impor a integridade dos dados.
+                    </p>
+                    <p>
+                        Mas se o modelo não foi cuidadosamente projetado, haverá um alto grau de contenção do banco de
+                        dados, resultando em um desempenho ruim. Embora as transações de banco de dados desempenhem um
+                        papel vital em tais operações, é desejável resolver alguns dos problemas relacionados à
+                        integridade dos dados diretamente no modelo.
+                    </p>
+                    <p>
+                        Também é necessário ser capaz de impor as invariantes. As invariantes são aquelas regras que
+                        devem ser mantidas sempre que os dados mudam. Isso é difícil de perceber quando muitos objetos
+                        contêm referências a objetos de dados em mudança.
+                    </p>
+                    <p>
+                        É difícil garantir a consistência das mudanças nos objetos em um modelo com associações
+                        complexas. Muitas vezes os invariantes se aplicam a objetos intimamente relacionados, não apenas
+                        a objetos discretos. No entanto, esquemas de bloqueio cautelosos fazem com que vários usuários
+                        interfiram inutilmente entre si e tornem um sistema inutilizável.
+                    </p>
+                    <p>
+                        <b>Portanto</b>, use Aggregates. Um Aggregate é um grupo de objetos associados que são considerados como
+                        uma unidade em relação às alterações de dados. O Aggregate é demarcado por uma fronteira que
+                        separa os objetos internos dos externos. Cada Aggregate tem uma raiz. A raiz é uma Entidade e é o
+                        único objeto acessível de fora. A raiz pode conter referências a qualquer um dos objetos
+                        agregados e os outros objetos podem conter referências uns aos outros, mas um objeto externo
+                        pode conter referências apenas ao objeto raiz. Se houver outras Entidades dentro da fronteira, a
+                        identidade dessas entidades é local, fazendo sentido apenas dentro do agregado.
                     </p>
                     <p>
 
