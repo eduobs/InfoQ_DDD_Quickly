@@ -670,13 +670,59 @@
                         interfiram inutilmente entre si e tornem um sistema inutilizável.
                     </p>
                     <p>
-                        <b>Portanto</b>, use Aggregates. Um Aggregate é um grupo de objetos associados que são considerados como
+                        <b>Portanto</b>, use Aggregates. Um Aggregate é um grupo de objetos associados que são
+                        considerados como
                         uma unidade em relação às alterações de dados. O Aggregate é demarcado por uma fronteira que
-                        separa os objetos internos dos externos. Cada Aggregate tem uma raiz. A raiz é uma Entidade e é o
+                        separa os objetos internos dos externos. Cada Aggregate tem uma raiz. A raiz é uma Entidade e é
+                        o
                         único objeto acessível de fora. A raiz pode conter referências a qualquer um dos objetos
                         agregados e os outros objetos podem conter referências uns aos outros, mas um objeto externo
                         pode conter referências apenas ao objeto raiz. Se houver outras Entidades dentro da fronteira, a
                         identidade dessas entidades é local, fazendo sentido apenas dentro do agregado.
+                    </p>
+                    <p>
+                        Como o Aggregate está garantindo a integridade dos dados e aplicando as invariantes? Como outros
+                        objetos podem conter referências apenas à raiz, isso significa que eles não podem alterar
+                        diretamente os outros objetos no aggregate. Tudo o que eles podem fazer é alterar a raiz ou
+                        pedir que a raiz execute algumas ações. E a raiz poderá alterar os outros objetos, mas essa é
+                        uma operação contida dentro do aggregate, e é controlável. Se a raiz for excluída e removida da
+                        memória, todos os outros objetos do agregado também serão excluídos, pois não há outro objeto
+                        que contenha referência a nenhum deles. Quando qualquer alteração é feita na raiz que afeta
+                        indiretamente os outros objetos no aggregate, é simples impor as invariantes porque a raiz fará
+                        isso. É muito mais difícil fazê-lo quando os objetos externos têm acesso direto aos internos e
+                        os alteram. Impor os invariantes em tal circunstância envolve colocar alguma lógica em objetos
+                        externos para lidar com isso, o que não é desejável.
+                    </p>
+                    <p>
+                        Se os objetos de um Aggregate forem armazenados em um banco de dados, somente a raiz deve ser
+                        obtida por meio de consultas. Os outros objetos devem ser obtidos por meio de associações de
+                        travessia.
+                    </p>
+                    <p>
+                        Objetos dentro de um Aggregate devem ter permissão para conter referências a raízes de outros
+                        Aggregates.
+                    </p>
+                    <p>
+                        A Entidade raiz possui identidade global e é responsável por manter as invariantes. As Entidades
+                        Internas possuem identidade local.
+                    </p>
+                    <p>
+                        Agrupe as Entidades e os Objetos de Valor em Aggregates e defina limites em torno de cada um.
+                        Escolha uma Entidade para ser a raiz de cada Aggregate e controle todo o acesso aos objetos
+                        dentro do limite através da raiz. Permitir que objetos externos mantenham referências apenas à
+                        raiz. Referências transitórias a membros internos podem ser passadas para uso em uma única
+                        operação. Como a raiz controla o acesso, ela não pode ser surpreendida por alterações nos
+                        componentes internos. Esse arranjo torna prático aplicar todas as invariantes para objetos no
+                        Aggregate e para o Aggregate como um todo em qualquer mudança de estado.
+                    </p>
+                    <p>
+                        Um exemplo simples de uma Aggregation é mostrado no diagrama a seguir. O cliente é a raiz do
+                        Agregado e todos os outros objetos são internos. Se o endereço for necessário, uma cópia dele
+                        pode ser passada para objetos externos.
+                    </p>
+                    <img src="assets/03-04.JPG" width="531" title="img0304" />
+                    <p>
+
                     </p>
                     <p>
 
