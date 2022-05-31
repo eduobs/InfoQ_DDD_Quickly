@@ -721,6 +721,66 @@
                         pode ser passada para objetos externos.
                     </p>
                     <img src="assets/03-04.JPG" width="531" title="img0304" />
+                    <br />
+                    <h2>Factories</h2>
+                    <p>
+                        Entidades e Aggregates geralmente podem ser grandes e complexos – complexos demais para serem
+                        criados no construtor da entidade raiz. De fato, tentar construir um agregado complexo em sua
+                        estrutura está em contradição com o que muitas vezes acontece no próprio domínio, onde as coisas
+                        são criadas por outras coisas (como a eletrônica é criada em linhas de montagem). É como ter a
+                        própria impressora construída.
+                    </p>
+                    <p>
+                        Quando um objeto cliente deseja criar outro objeto, ele chama seu construtor e possivelmente
+                        passa alguns parâmetros. Mas quando a construção do objeto é um processo trabalhoso, criar o
+                        objeto envolve muito conhecimento sobre a estrutura interna do objeto, sobre as relações entre
+                        os objetos contidos e as regras aplicadas a eles. Isso significa que cada cliente do objeto terá
+                        um conhecimento específico sobre o objeto construído. Isso quebra o encapsulamento dos objetos
+                        de domínio e dos Aggregates. Se o cliente pertence à camada de aplicação, uma parte da camada de
+                        domínio foi movida para fora, atrapalhando todo o design. Na vida real, é como se tivéssemos
+                        plástico, borracha, metal, silício e construíssemos nossa própria impressora. Não é impossível,
+                        mas realmente vale a pena fazer isso?
+                    </p>
+                    <p>
+                        A criação de um objeto pode ser uma operação importante em si, mas operações de montagem
+                        complexas não cabem na responsabilidade dos objetos criados. Combinar essas responsabilidades
+                        pode produzir designs desajeitados que são difíceis de entender.
+                    </p>
+                    <p>
+                        Portanto, é necessário introduzir um novo conceito que ajude a encapsular o processo de criação
+                        de objetos complexos. Isso se chama <b>Factory</b>. Factories são usadas para encapsular o
+                        conhecimento necessário para a criação de objetos e são especialmente úteis para criar
+                        Aggregates. Quando a raiz do Aggregate é criada, todos os objetos contidos no Aggregate são
+                        criados junto com ele e todas as invariantes são aplicadas.
+                    </p>
+                    <p>
+                        É importante que o processo de criação seja atômico. Se não for, há uma chance de o processo de
+                        criação ser feito pela metade para alguns objetos, deixando-os em um estado indefinido. Isso é
+                        ainda mais verdadeiro para Agregados. Quando a raiz é criada, é necessário que todos os objetos
+                        sujeitos a invariantes também sejam criados. Caso contrário, as invariantes não podem ser
+                        impostas. Para objetos de valor imutáveis, significa que todos os atributos são inicializados em
+                        seu estado válido. Se um objeto não puder ser criado corretamente, uma exceção deve ser gerada,
+                        garantindo que um valor inválido não seja retornado.
+                    </p>
+                    <p>
+                        Portanto, mude a responsabilidade de criar instâncias de objetos complexos e Agregados para um
+                        objeto separado, que pode não ter responsabilidade no modelo de domínio, mas ainda faz parte do
+                        design do domínio. Forneça uma interface que encapsule todo assembly complexo e que não exija
+                        que o cliente faça referência às classes concretas dos objetos que estão sendo instanciados.
+                        Crie Agregados inteiros como uma unidade, aplicando suas invariantes.
+                    </p>
+                    <p>
+                        Existem vários padrões de projeto usados para implementar Factories. O livro Design Patterns de
+                        Gamma et all. descreve-os em detalhes, e apresenta esses dois padrões entre outros: Factory
+                        Method, Abstract Factory. Não tentaremos apresentar os padrões de uma perspectiva de design, mas
+                        de uma modelagem de domínio.
+                    </p>
+                    <p>
+                        Um Factory Method é um método de objeto que contém e oculta o conhecimento necessário para criar
+                        outro objeto. Isso é muito útil quando um cliente deseja criar um objeto que pertence a um
+                        Aggregate. A solução é adicionar um método à raiz Agregada, que cuida da criação do objeto,
+                        impõe todas as invariantes e retorna uma referência a esse objeto ou a uma cópia dele.
+                    </p>
                     <p>
 
                     </p>
