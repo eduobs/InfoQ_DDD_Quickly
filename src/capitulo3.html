@@ -810,12 +810,12 @@
                         Ao criar uma Factory, somos obrigados a violar o encapsulamento de um objeto, o que deve ser
                         feito com cuidado. Sempre que algo mudar no objeto que tenha impacto nas regras de construção ou
                         em algumas das invariantes, precisamos nos certificar de que a Factory esteja atualizada para
-                        suportar a nova condição. As factorys estão intimamente relacionadas aos objetos que são
+                        suportar a nova condição. As factories estão intimamente relacionadas aos objetos que são
                         criados. Isso pode ser uma fraqueza, mas também pode ser uma força. Um Aggregate contém uma
-                        série
-                        de objetos que estão intimamente relacionados. A construção da raiz está relacionada à criação
-                        dos demais objetos no Aggregate. Tem que haver alguma lógica que une um Aggregate. A lógica não
-                        pertence naturalmente a nenhum dos objetos, pois trata-se da construção de outros objetos.
+                        série de objetos que estão intimamente relacionados. A construção da raiz está relacionada à
+                        criação dos demais objetos no Aggregate. Tem que haver alguma lógica que une um Aggregate. A
+                        lógica não pertence naturalmente a nenhum dos objetos, pois trata-se da construção de outros
+                        objetos.
                         Parece apropriado usar uma classe Factory especial que recebe a tarefa de criar todo o Aggregate
                         e que conterá as regras, as restrições e as invariantes que devem ser aplicadas para que o
                         Aggregate seja válido. Os objetos permanecerão simples e servirão ao seu propósito específico
@@ -832,17 +832,29 @@
                     <p>
                         Há momentos em que uma Factory não é necessária, e um construtor simples é suficiente. Use um
                         construtor quando:
-                        <br />
-                        <ul>
-                            <li>A construção não é complicada.</li>
-                            <li>A criação de um objeto não envolve a criação de outros, e todos os atributos necessários são passados pelo construtor.</li>
-                            <li>O cliente está interessado na implementação, talvez queira escolher a Estratégia utilizada.</li>
-                            <li>A classe é o tipo. Não há hierarquia envolvida, portanto, não há necessidade de escolher entre uma lista de implementações concretas.</li>
-                        </ul>
                     </p>
+                    <ul>
+                        <li>A construção não é complicada.</li>
+                        <li>A criação de um objeto não envolve a criação de outros, e todos os atributos necessários são
+                            passados pelo construtor.</li>
+                        <li>O cliente está interessado na implementação, talvez queira escolher a Estratégia utilizada.
+                        </li>
+                        <li>A classe é o tipo. Não há hierarquia envolvida, portanto, não há necessidade de escolher
+                            entre uma lista de implementações concretas.</li>
+                    </ul>
                     <p>
-
+                        Outra observação é que as Factories precisam criar novos objetos do zero, ou são obrigadas a
+                        reconstituir objetos que existiam anteriormente, mas provavelmente foram persistidos em um banco
+                        de dados. Trazer Entidades de volta para a memória de seu local de descanso em um banco de dados
+                        envolve um processo completamente diferente do que criar um novo. Uma diferença óbvia é que o
+                        novo objeto não precisa de uma nova identidade. O objeto já tem um. As violações dos invariantes
+                        são tratadas de forma diferente. Quando um novo objeto é criado do zero, qualquer violação de
+                        invariantes acaba em uma exceção. Não podemos fazer isso com objetos recriados de um banco de
+                        dados. Os objetos precisam ser reparados de alguma forma, para que possam ser funcionais, caso
+                        contrário há perda de dados.
                     </p>
+                    <br />
+                    <h2>Repositórios</h2>
                     <p>
 
                     </p>
