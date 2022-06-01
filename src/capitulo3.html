@@ -783,22 +783,62 @@
                     </p>
                     <img src="assets/03-05.JPG" width="531" title="img0305" />
                     <p>
-
+                        O contêiner contém componentes e eles são de um determinado tipo. É necessário que, quando tal
+                        componente for criado, pertença automaticamente a um container. O cliente chama o método
+                        <i>createComponent(Type t)</i> do contêiner. O contêiner instancia um novo componente. A classe
+                        concreta do componente é determinada com base em seu tipo. Após sua criação, o componente é
+                        adicionado à coleção de componentes contidos no container e uma cópia dele é devolvida ao
+                        cliente.
                     </p>
                     <p>
-
+                        Há momentos em que a construção de um objeto é mais complexa, ou quando a criação de um objeto
+                        envolve a criação de uma série de objetos. Por exemplo: a criação de um Agregado. Ocultar as
+                        necessidades internas de construção de um Agregado pode ser feito em um objeto Fábrica separado
+                        dedicado a essa tarefa. Vamos considerar o exemplo de um módulo de programa que calcula a rota
+                        que pode ser seguida por um carro da partida ao destino recebendo uma série de restrições. O
+                        usuário faz login no site que executa o aplicativo e especifica uma das seguintes restrições: a
+                        rota mais curta, a rota mais rápida, a rota mais barata. As rotas criadas podem ser anotadas com
+                        informações do usuário que precisam ser salvas, para que possam ser recuperadas posteriormente
+                        quando o cliente fizer login novamente.
+                    </p>
+                    <img src="assets/03-06.JPG" width="531" title="img0305" />
+                    <p>
+                        O gerador de ID de Rota é usado para criar uma identidade única para cada rota necessária para
+                        uma Entidade.
                     </p>
                     <p>
-
+                        Ao criar uma Factory, somos obrigados a violar o encapsulamento de um objeto, o que deve ser
+                        feito com cuidado. Sempre que algo mudar no objeto que tenha impacto nas regras de construção ou
+                        em algumas das invariantes, precisamos nos certificar de que a Factory esteja atualizada para
+                        suportar a nova condição. As factorys estão intimamente relacionadas aos objetos que são
+                        criados. Isso pode ser uma fraqueza, mas também pode ser uma força. Um Aggregate contém uma
+                        série
+                        de objetos que estão intimamente relacionados. A construção da raiz está relacionada à criação
+                        dos demais objetos no Aggregate. Tem que haver alguma lógica que une um Aggregate. A lógica não
+                        pertence naturalmente a nenhum dos objetos, pois trata-se da construção de outros objetos.
+                        Parece apropriado usar uma classe Factory especial que recebe a tarefa de criar todo o Aggregate
+                        e que conterá as regras, as restrições e as invariantes que devem ser aplicadas para que o
+                        Aggregate seja válido. Os objetos permanecerão simples e servirão ao seu propósito específico
+                        sem a confusão da lógica de construção complexa.
                     </p>
                     <p>
-
+                        Factory de Entidade e Factory de Value Objects são diferentes. Os valores geralmente são
+                        objetos imutáveis, e todos os atributos necessários precisam ser produzidos no momento da
+                        criação. Quando o objeto é criado, ele deve ser válido e final. Não vai mudar. As entidades não
+                        são imutáveis. Eles podem ser alterados posteriormente, definindo alguns dos atributos com a
+                        menção de que todas as invariantes precisam ser respeitadas. Outra diferença vem do fato de que
+                        as Entidades precisam de identidade, enquanto os Objetos de Valor não.
                     </p>
                     <p>
-
-                    </p>
-                    <p>
-
+                        Há momentos em que uma Factory não é necessária, e um construtor simples é suficiente. Use um
+                        construtor quando:
+                        <br />
+                        <ul>
+                            <li>A construção não é complicada.</li>
+                            <li>A criação de um objeto não envolve a criação de outros, e todos os atributos necessários são passados pelo construtor.</li>
+                            <li>O cliente está interessado na implementação, talvez queira escolher a Estratégia utilizada.</li>
+                            <li>A classe é o tipo. Não há hierarquia envolvida, portanto, não há necessidade de escolher entre uma lista de implementações concretas.</li>
+                        </ul>
                     </p>
                     <p>
 
