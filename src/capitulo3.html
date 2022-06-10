@@ -856,6 +856,63 @@
                     <br />
                     <h2>Repositórios</h2>
                     <p>
+                        Em um model-driven design, os objetos têm um ciclo de vida que começa com a criação e
+                        termina com a exclusão ou arquivamento. Um construtor ou uma Fábrica cuida da criação do objeto.
+                        Todo o propósito de criar objetos é usá-los. Em uma linguagem orientada a objetos, deve-se
+                        manter uma referência a um objeto para poder usá-lo. Para ter tal referência, o cliente deve
+                        criar o objeto ou obtê-lo de outro, percorrendo uma associação existente. Por exemplo, para
+                        obter um Objeto de Valor de um Agregado, o cliente deve solicitá-lo da raiz do Agregado. O
+                        problema agora é que o cliente deve ter uma referência à raiz. Para aplicações de grande porte,
+                        isso se torna um problema, pois é preciso garantir que o cliente tenha sempre uma referência ao
+                        objeto necessário, ou a outro que tenha referência ao respectivo objeto. Usar essa regra no
+                        design forçará os objetos a manter uma série de referências que provavelmente não manteriam de
+                        outra forma. Isso aumenta o acoplamento, criando uma série de associações que não são realmente
+                        necessárias.
+                    </p>
+                    <p>
+                        Usar um objeto significa que o objeto já foi criado. Se o objeto é a raiz de um Agregado, então
+                        é uma Entidade, e é provável que seja armazenado em um estado persistente em um banco de dados
+                        ou outra forma de persistência. Se for um objeto de valor, pode ser obtido de uma entidade por
+                        meio de uma associação. Acontece que uma grande quantidade de objetos pode ser obtida
+                        diretamente do banco de dados. Isso resolve o problema de obter referência de objetos. Quando um
+                        cliente deseja usar um objeto, ele acessa o banco de dados, recupera o objeto dele e o utiliza.
+                        Esta parece ser uma solução rápida e simples, mas tem impactos negativos no design.
+                    </p>
+                    <p>
+                        Os bancos de dados fazem parte da infraestrutura. Uma solução ruim é o cliente estar ciente dos
+                        detalhes necessários para acessar um banco de dados. Por exemplo, o cliente precisa criar
+                        consultas SQL para recuperar os dados desejados. A consulta ao banco de dados pode retornar um
+                        conjunto de registros, expondo ainda mais seus detalhes internos. Quando muitos clientes
+                        precisam criar objetos diretamente do banco de dados, verifica-se que esse código está espalhado
+                        por todo o domínio. Nesse ponto, o modelo de domínio fica comprometido. Ele precisa lidar com
+                        muitos detalhes de infraestrutura em vez de lidar com conceitos de domínio. O que acontece se
+                        for tomada uma decisão de alterar o banco de dados subjacente? Todo esse código disperso precisa
+                        ser alterado para poder acessar o novo armazenamento. Quando o código do cliente acessa um banco
+                        de dados diretamente, é possível que ele restaure um objeto interno para um Agregado. Isso
+                        quebra o encapsulamento do Agregado com consequências desconhecidas.
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
 
                     </p>
                 </article>
