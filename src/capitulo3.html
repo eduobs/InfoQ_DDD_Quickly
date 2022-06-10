@@ -801,7 +801,7 @@
                         informações do usuário que precisam ser salvas, para que possam ser recuperadas posteriormente
                         quando o cliente fizer login novamente.
                     </p>
-                    <img src="assets/03-06.JPG" width="531" title="img0305" />
+                    <img src="assets/03-06.JPG" width="531" title="img0306" />
                     <p>
                         O gerador de ID de Rota é usado para criar uma identidade única para cada rota necessária para
                         uma Entidade.
@@ -892,17 +892,38 @@
                         quebra o encapsulamento do Agregado com consequências desconhecidas.
                     </p>
                     <p>
-
+                        Um cliente precisa de um meio prático de adquirir referências a objetos de domínio
+                        preexistentes. Se a infraestrutura facilitar isso, os desenvolvedores do cliente podem adicionar
+                        mais associações percorríveis, confundindo o modelo. Por outro lado, eles podem usar consultas
+                        para extrair os dados exatos de que precisam do banco de dados ou para extrair alguns objetos
+                        específicos em vez de navegar pelas raízes Agregadas. A lógica do domínio se move para as
+                        consultas e o código do cliente, e as Entidades e os Objetos de Valor tornam-se meros
+                        contêineres de dados. A pura complexidade técnica de aplicar a maioria das infraestruturas de
+                        acesso ao banco de dados rapidamente sobrecarrega o código do cliente, o que leva os
+                        desenvolvedores a simplificar a camada de domínio, o que torna o modelo irrelevante. O efeito
+                        geral é que o foco do domínio é perdido e o design fica comprometido.
                     </p>
                     <p>
-
+                        <b>Portanto</b>, use um Repositório, cuja finalidade é encapsular toda a lógica necessária para
+                        obter referências de objetos. Os objetos de domínio não terão que lidar com a infraestrutura
+                        para obter as referências necessárias para outros objetos do domínio. Eles apenas os obterão do
+                        Repositório e o modelo está recuperando sua clareza e foco.
                     </p>
                     <p>
-
+                        O Repositório pode armazenar referências a alguns dos objetos. Quando um objeto é criado, ele
+                        pode ser salvo no Repositório e recuperado de lá para ser usado posteriormente. Se o cliente
+                        solicitou um objeto do Repositório e o Repositório não o possui, ele pode obtê-lo do
+                        armazenamento. De qualquer forma, o Repositório atua como um local de armazenamento para objetos
+                        acessíveis globalmente.
                     </p>
                     <p>
-
+                        O Repositório também pode incluir uma Strategy. Ele pode acessar um armazenamento de
+                        persistência ou outro baseado na Strategy especificada. Ele pode usar diferentes locais de
+                        armazenamento para diferentes tipos de objetos. O efeito geral é que o modelo de domínio é
+                        desacoplado da necessidade de armazenar objetos ou suas referências e acessar a infraestrutura
+                        de persistência subjacente.
                     </p>
+                    <img src="assets/03-07.JPG" width="531" title="img0307" />
                     <p>
 
                     </p>
