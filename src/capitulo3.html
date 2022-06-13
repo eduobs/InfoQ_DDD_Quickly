@@ -925,16 +925,54 @@
                     </p>
                     <img src="assets/03-07.JPG" width="531" title="img0307" />
                     <p>
-
+                        Para cada tipo de objeto que precisa de acesso global, crie um objeto que possa fornecer a
+                        ilusão de uma coleção na memória de todos os objetos desse tipo. Configure o acesso por meio de
+                        uma interface global bem conhecida. Forneça métodos para adicionar e remover objetos, que
+                        encapsularão a inserção ou remoção real de dados no armazenamento de dados. Fornece métodos que
+                        selecionam objetos com base em alguns critérios e retornam objetos totalmente instanciados ou
+                        coleções de objetos cujos valores de atributo atendem aos critérios, encapsulando assim a
+                        tecnologia real de armazenamento e consulta. Forneça repositórios apenas para raízes agregadas
+                        que realmente precisam de acesso direto. Manter o cliente focado no modelo, delegando todo o
+                        armazenamento de objetos e acesso aos Repositórios.
                     </p>
                     <p>
-
+                        Um Repositório pode conter informações detalhadas utilizadas para acessar a infraestrutura, mas
+                        sua interface deve ser simples. Um Repositório deve ter um conjunto de métodos usados para
+                        recuperar objetos. O cliente chama esse método e passa um ou mais parâmetros que representam os
+                        critérios de seleção usados para selecionar um objeto ou um conjunto de objetos correspondentes.
+                        Uma Entidade pode ser facilmente especificada passando sua identidade. Outros critérios de
+                        seleção podem ser compostos por um conjunto de atributos de objetos. O Repositório comparará
+                        todos os objetos com esse conjunto e retornará aqueles que satisfizerem os critérios. A
+                        interface do Repositório pode conter métodos usados para realizar alguns cálculos
+                        complementares, como o número de objetos de um determinado tipo.
                     </p>
                     <p>
-
+                        Pode-se notar que a implementação de um repositório pode estar intimamente ligada à
+                        infraestrutura, mas que a interface do repositório será puro modelo de domínio.
                     </p>
+                    <img src="assets/03-08.JPG" width="531" title="img0308" />
                     <p>
-
+                        Outra opção é especificar um critério de seleção como uma Especificação. A Especificação permite
+                        definir critérios mais complexos, como por exemplo:
+                    </p>
+                    <img src="assets/03-09.JPG" width="531" title="img0309" />
+                    <p>
+                        Existe uma relação entre Fábrica e Repositório. Ambos são padrões do design orientado a modelos
+                        e ambos nos ajudam a gerenciar o ciclo de vida dos objetos de domínio. Enquanto a Fábrica se
+                        preocupa com a criação de objetos, o Repositório cuida dos objetos já existentes. O Repositório
+                        pode armazenar objetos em cache localmente, mas na maioria das vezes ele precisa recuperá-los de
+                        um armazenamento persistente. Os objetos são criados usando um construtor ou são passados ​​para
+                        uma Fábrica para serem construídos. Por isso, o Repositório pode ser visto como uma Fábrica,
+                        pois cria objetos. Não é uma criação do zero, mas uma reconstituição de um objeto que existia.
+                        Não devemos misturar um Repositório com uma Fábrica. A Fábrica deve criar novos objetos,
+                        enquanto o Repositório deve encontrar objetos já criados. Quando um novo objeto deve ser
+                        adicionado ao Repositório, ele deve ser criado primeiro usando a Fábrica, e então deve ser
+                        entregue ao Repositório que irá armazená-lo como no exemplo abaixo.
+                    </p>
+                    <img src="assets/03-10.JPG" width="531" title="img0310" />
+                    <p>
+                        Outra maneira de notar isso é que as Fábricas são de “domínio puro”, mas que os Repositórios
+                        podem conter links para a infraestrutura, por exemplo, o banco de dados.
                     </p>
                 </article>
             </main>
