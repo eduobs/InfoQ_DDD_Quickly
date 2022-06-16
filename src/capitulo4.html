@@ -180,48 +180,62 @@
                     </p>
                     <script src="https://gist.github.com/eduobs/3da9dbbd62ec0c16196cbd3bf76a6d5d.js"></script>
                     <p>
-
+                        Colocar a restrição em um método separado tem a vantagem de torná-la explícita. É fácil de ler e
+                        todos perceberão que o método add() está sujeito a essa restrição. Também há espaço para
+                        crescimento adicionando mais lógica aos métodos se a restrição se tornar mais complexa.
                     </p>
                     <p>
-
+                        Os processos geralmente são expressos em código com procedimentos. Não usaremos uma abordagem
+                        procedural, pois estamos usando uma linguagem orientada a objetos, então precisamos escolher um
+                        objeto para o processo e adicionar um comportamento a ele. A melhor maneira de implementar
+                        processos é usar um serviço. Se houver diferentes maneiras de realizar o processo, podemos
+                        encapsular o algoritmo em um objeto e usar uma Strategy. Nem todos os processos devem ser
+                        explicitados. Se a Linguagem Ubíqua menciona especificamente o respectivo processo, então é hora
+                        de uma implementação explícita.
                     </p>
                     <p>
-
+                        O último método para tornar explícitos os conceitos que estamos abordando aqui é a
+                        Specification. Simplificando, uma Specification é usada para testar um objeto para ver se ele
+                        atende a determinados critérios.
                     </p>
                     <p>
-
+                        A camada de domínio contém regras de negócios que são aplicadas a Entidades e Objetos de Valor.
+                        Essas regras geralmente são incorporadas aos objetos aos quais se aplicam. Algumas dessas regras
+                        são apenas um conjunto de perguntas cuja resposta é “sim” ou “não”. Tais regras podem ser
+                        expressas através de uma série de operações lógicas realizadas em valores booleanos, e o
+                        resultado final também é um booleano. Um exemplo é o teste realizado em um objeto Cliente para
+                        ver se ele é elegível para um determinado crédito. A regra pode ser expressa como um método,
+                        chamado isEligible(), e pode ser anexada ao objeto Customer. Mas esta regra não é um método
+                        simples que opera estritamente nos dados do Cliente. Avaliar a regra envolve verificar as
+                        credenciais do cliente, verificar se ele pagou suas dívidas no passado, verificar se ele tem
+                        saldos pendentes etc. Tais regras de negócios podem ser grandes e complexas, inchando o objeto a
+                        ponto de não mais servir ao seu propósito original. Neste ponto, podemos ficar tentados a mover
+                        toda a regra para o nível do aplicativo, porque parece que ela se estende além do nível do
+                        domínio. Na verdade, é hora de uma refatoração.
                     </p>
                     <p>
-
+                        A regra deve ser encapsulada em um objeto próprio, que passa a ser a Specification do Cliente, e
+                        deve ser mantida na camada de domínio. O novo objeto conterá uma série de métodos booleanos que
+                        testam se um determinado objeto Cliente é elegível para crédito ou não. Cada método desempenha o
+                        papel de um pequeno teste, e todos os métodos combinados dão a resposta à pergunta original. Se
+                        a regra de negócio não estiver contida em um objeto Specification, o código correspondente
+                        acabará sendo espalhado por vários objetos, tornando-o inconsistente.
                     </p>
                     <p>
-
+                        A Specification é usada para testar objetos para ver se eles atendem a alguma necessidade, ou se
+                        estão prontos para algum propósito. Também pode ser usado para selecionar um determinado objeto
+                        de uma coleção ou como condição durante a criação de um objeto.
                     </p>
                     <p>
-
+                        Muitas vezes, uma única Specification verifica se uma regra simples é satisfeita e, em seguida,
+                        várias dessas specifications são combinadas em uma composição que expressa a regra complexa,
+                        assim:
                     </p>
+                    <script src="https://gist.github.com/eduobs/919fd494561c7ea4c4fd466582b26566.js"></script>
                     <p>
-
+                        Testar regras simples é mais simples, e apenas lendo este código fica óbvio o que significa que
+                        um cliente é elegível para um reembolso.
                     </p>
-                    <p>
-
-                    </p>
-                    <p>
-
-                    </p>
-                    <p>
-
-                    </p>
-                    <p>
-
-                    </p>
-                    <p>
-
-                    </p>
-                    <p>
-
-                    </p>
-                    <!-- <img src="assets/03-09.JPG" width="531" title="img0309" /> -->
                 </article>
             </main>
         </main>
