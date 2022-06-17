@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Eduardo Barbosa">
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="" />
+    <meta name="robots" content="nofollow" />
+    <title>DDD Quickly - Preservando A Integridade Do Modelo</title>
+    <link rel="stylesheet" type="text/css" href="assets/styles.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav>
+            <a href="capitulo3.html">&lt;&lt; Capítulo 4</a>
+            <a href="capitulo5.html">Capítulo 6 >></a>
+        </nav>
+
+        <main>
+            <main>
+                <article>
+                    <h1>Preservando A Integridade Do Modelo</h1>
+                    <p>
+                        Este capítulo trata de grandes projetos que exigem os esforços combinados de várias equipes.
+                        Somos confrontados com um conjunto diferente de desafios quando várias equipas, sob gestão e
+                        coordenação diferentes, são colocadas na tarefa de desenvolver um projeto. Projetos corporativos
+                        são geralmente grandes projetos, que empregam várias tecnologias e recursos. A concepção de tais
+                        projetos ainda deve ser baseada em um modelo de domínio, e precisamos tomar as medidas adequadas
+                        para garantir o sucesso do projeto.
+                    </p>
+                    <p>
+                        Quando várias equipes trabalham em um projeto, o desenvolvimento de código é feito em paralelo,
+                        sendo atribuída a cada equipe uma parte específica do modelo. Essas partes não são
+                        independentes, mas estão mais ou menos interconectadas. Todos eles começam com um grande modelo
+                        e recebem uma parte dele para implementar. Digamos que uma das equipes criou um módulo e o
+                        disponibilizou para outras equipes usá-lo. Um desenvolvedor de outra equipe começa a usar o
+                        módulo e descobre que está faltando alguma funcionalidade necessária para seu próprio módulo.
+                        Ele adiciona a funcionalidade necessária e faz o check-in do código para que possa ser usado por
+                        todos. O que ele pode não perceber é que esta é realmente uma mudança do modelo, e é bem
+                        possível que essa mudança interrompa a funcionalidade do aplicativo. Isso pode acontecer
+                        facilmente, pois ninguém se dá ao trabalho de entender completamente todo o modelo. Todo mundo
+                        conhece seu próprio quintal, mas outras áreas não são conhecidas com detalhes suficientes.
+                    </p>
+                    <p>
+                        É tão fácil começar de um bom modelo e progredir em direção a um inconsistente. O primeiro
+                        requisito de um modelo é ser consistente, com termos invariáveis ​​e sem contradições. A
+                        consistência interna de um modelo é chamada de unificação. Um projeto empresarial pode ter um
+                        modelo cobrindo todo o domínio da empresa, sem contradições e termos sobrepostos. Um modelo
+                        empresarial unificado é um ideal que não se realiza facilmente e, às vezes, nem vale a pena
+                        tentar. Tais projetos precisam do esforço combinado de muitas equipes. As equipes precisam de um
+                        grande grau de independência no processo de desenvolvimento, pois não têm tempo para se reunir e
+                        discutir constantemente o projeto. A coordenação dessas equipes é uma tarefa assustadora. Eles
+                        podem pertencer a departamentos diferentes e ter gerenciamento separado. Quando o design do
+                        modelo evolui parcialmente de forma independente, estamos diante da possibilidade de perder a
+                        integridade do modelo. Preservar a integridade do modelo esforçando-se para manter um grande
+                        modelo unificado para todo o projeto corporativo não funcionará. A solução não é tão óbvia,
+                        porque é o oposto de tudo o que aprendemos até agora. Em vez de tentar manter um grande modelo
+                        que vai desmoronar mais tarde, devemos conscientemente dividi-lo em vários modelos. Vários
+                        modelos bem integrados podem evoluir de forma independente desde que obedeçam ao contrato a que
+                        estão vinculados. Cada modelo deve ter uma borda claramente delimitada e os relacionamentos
+                        entre os modelos devem ser definidos com precisão.
+                    </p>
+                    <p>
+                        Apresentaremos um conjunto de técnicas utilizadas para manter a integridade do modelo. O desenho
+                        a seguir apresenta essas técnicas e a relação entre elas.
+                    </p>
+                    <img src="assets/05-01.JPG" width="531" title="img0501" />
+                    <p></p>
+                </article>
+            </main>
+        </main>
+
+        <nav>
+            <a href="capitulo3.html">&lt;&lt; Capítulo 3</a>
+            <a href="capitulo5.html">Capítulo 5 >></a>
+        </nav>
+
+        <footer>
+            <p>
+                This content is not licensed under a
+                <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>
