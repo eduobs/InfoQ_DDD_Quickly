@@ -68,7 +68,92 @@
                         a seguir apresenta essas técnicas e a relação entre elas.
                     </p>
                     <img src="assets/05-01.JPG" width="531" title="img0501" />
-                    <p></p>
+                    <p>
+                        Cada modelo tem um contexto. Quando lidamos com um único modelo, o contexto está implícito. Não
+                        precisamos defini-lo. Quando criamos um aplicativo que deve interagir com outro software, por
+                        exemplo, um aplicativo legado, fica claro que o novo aplicativo tem seu próprio modelo e
+                        contexto, e eles são separados do modelo legado e seu contexto. Eles não podem ser combinados,
+                        misturados ou confundidos. Mas quando trabalhamos em um grande aplicativo corporativo,
+                        precisamos definir o contexto para cada modelo que criamos.
+                    </p>
+                    <p>
+                        Vários modelos estão em jogo em qualquer grande projeto. No entanto, quando o código baseado em
+                        modelos distintos é combinado, o software se torna problemático, não confiável e difícil de
+                        entender. A comunicação entre os membros da equipe torna-se confusa. Muitas vezes não é claro em
+                        que contexto um modelo não deve ser aplicado.
+                    </p>
+                    <p>
+                        Não existe uma fórmula para dividir um modelo grande em menores. Tente colocar em um modelo
+                        aqueles elementos que estão relacionados e que formam um conceito natural. Um modelo deve ser
+                        pequeno o suficiente para ser atribuído a uma equipe. A cooperação e a comunicação da equipe são
+                        mais fluidas e completas, o que ajuda os desenvolvedores que trabalham no mesmo modelo. O
+                        contexto de um modelo é o conjunto de condições que precisam ser aplicadas para garantir que os
+                        termos usados no modelo tenham um significado específico.
+                    </p>
+                    <p>
+                        A ideia principal é definir o escopo de um modelo, traçar os limites de seu contexto, então
+                        fazer o máximo possível para manter o modelo unificado. É difícil manter um modelo puro quando
+                        ele abrange todo o projeto corporativo, mas é muito mais fácil quando ele é limitado a uma área
+                        específica. Defina explicitamente o contexto no qual um modelo se aplica. Defina explicitamente
+                        limites em termos de organização da equipe, uso em partes específicas do aplicativo e
+                        manifestações físicas, como bases de código e esquemas de banco de dados. Mantenha o modelo
+                        estritamente consistente dentro desses limites, mas não se distraia ou se confunda com problemas
+                        externos.
+                    </p>
+                    <p>
+                        Um Bounded Context (Contexto Limitado) não é um Módulo. Um Bounded Context fornece o quadro
+                        lógico dentro do qual o modelo evolui. Módulos são usados para organizar os elementos de um
+                        modelo, então o Bounded Context engloba o Módulo.
+                    </p>
+                    <p>
+                        Quando equipes diferentes precisam trabalhar no mesmo modelo, devemos ter muito cuidado para não
+                        pisar nos calos uns dos outros. Temos que estar constantemente cientes de que mudanças no modelo
+                        podem quebrar a funcionalidade existente. Ao usar vários modelos, todos podem trabalhar
+                        livremente em sua própria peça. Todos conhecemos os limites do nosso modelo e ficamos dentro das
+                        fronteiras. Nós apenas temos que manter o modelo puro, consistente e unificado. Cada modelo pode
+                        suportar refatoração com muito mais facilidade, sem repercussões em outros modelos. O design
+                        pode ser refinado e destilado para atingir a máxima pureza.
+                    </p>
+                    <p>
+                        Por exemplo, queremos criar um aplicativo de comércio eletrônico usado para vender coisas na
+                        Internet. Este aplicativo permite que os clientes se registrem e coletamos seus dados pessoais,
+                        incluindo números de cartão de crédito. Os dados são mantidos em um banco de dados relacional.
+                        Os clientes podem fazer login, navegar no site procurando mercadorias e fazer pedidos. O
+                        aplicativo precisará publicar um evento sempre que um pedido for feito, pois alguém terá que
+                        enviar o item solicitado. Também queremos construir uma interface de relatórios usada para criar
+                        relatórios, para que possamos monitorar o status das mercadorias disponíveis, o que os clientes
+                        estão interessados ​​em comprar, o que não gostam, etc. No início começamos com um modelo que
+                        abrange todo o domínio do comércio eletrônico. Somos tentados a fazê-lo, porque afinal nos
+                        pediram para criar um grande aplicativo. Mas se considerarmos a tarefa com mais cuidado,
+                        descobrimos que o aplicativo de e-shop não está realmente relacionado ao de relatórios. Eles têm
+                        preocupações separadas, operam com conceitos diferentes e podem até precisar usar tecnologias
+                        diferentes. A única coisa realmente comum é que os dados do cliente e da mercadoria são mantidos
+                        no banco de dados, e ambos os aplicativos o acessam.
+                    </p>
+                    <p>
+                        A abordagem recomendada é criar um modelo separado para cada um dos domínios, um para o comércio
+                        eletrônico e outro para os relatórios. Ambos podem evoluir livremente sem muita preocupação um
+                        com o outro, e até mesmo se tornarem aplicativos separados. Pode ser que o aplicativo de
+                        relatórios precise de alguns dados específicos que o aplicativo de comércio eletrônico deve
+                        armazenar no banco de dados, mas, caso contrário, eles podem crescer de forma independente.
+                    </p>
+                    <p>
+                        É necessário um sistema de mensagens para informar o pessoal do armazém sobre os pedidos
+                        realizados, para que possam enviar a mercadoria comprada. O pessoal do correio usará um
+                        aplicativo que fornece informações detalhadas sobre o item comprado, a quantidade, o endereço do
+                        cliente e os requisitos de entrega. Não é necessário que o modelo de e-shop abranja ambos os
+                        domínios de atividade. É muito mais simples para o aplicativo de e-shop enviar objetos de valor
+                        contendo informações de compra para o depósito usando mensagens assíncronas. Definitivamente,
+                        existem dois modelos que podem ser desenvolvidos separadamente, e só precisamos garantir que a
+                        interface entre eles funcione bem.
+                    </p>
+                    <h2>Continuous Integration</h2>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
                 </article>
             </main>
         </main>
