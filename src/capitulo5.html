@@ -150,6 +150,82 @@
                     </p>
                     <h2>Continuous Integration</h2>
                     <p>
+                        Uma vez que um Bounded Context foi definido, devemos mantê-lo sólido. Quando várias pessoas
+                        estão trabalhando no mesmo Contexto Delimitado, há uma forte tendência de fragmentação do
+                        modelo. Quanto maior a equipe, maior o problema, mas apenas três ou quatro pessoas podem
+                        encontrar problemas sérios.
+                    </p>
+                    <p>
+                        No entanto, dividir o sistema em contextos cada vez menores acaba perdendo um nível valioso de
+                        integração e coerência.
+                    </p>
+                    <p>
+                        Mesmo quando uma equipe trabalha em um contexto limitado, há espaço para erros. Precisamos nos
+                        comunicar dentro da equipe para garantir que todos entendam o papel desempenhado por cada
+                        elemento no modelo. Se alguém não entender as relações entre os objetos, eles podem modificar o
+                        código de tal forma que entre em contradição com a intenção original. É fácil cometer tal erro
+                        quando não mantemos 100% de foco na pureza do modelo. Um membro da equipe pode adicionar código
+                        que duplica o código existente sem saber, ou pode adicionar código duplicado em vez de alterar o
+                        código atual, com medo de quebrar a funcionalidade existente.
+                    </p>
+                    <p>
+                        Um modelo não é totalmente definido desde o início. Ele é criado e evolui continuamente com base
+                        em novos insights no domínio e feedback do processo de desenvolvimento. Isso significa que novos
+                        conceitos podem entrar no modelo e novos elementos são adicionados ao código. Todas essas
+                        necessidades devem ser integradas em um modelo unificado e implementadas de acordo com o código.
+                        É por isso que a Integração Contínua é um processo necessário dentro de um Contexto Limitado.
+                        Precisamos de um processo de integração para garantir que todos os novos elementos adicionados
+                        se encaixem harmoniosamente no restante do modelo e sejam implementados corretamente no código.
+                        Precisamos ter um procedimento usado para merge o código. Quanto mais cedo merge o
+                        código, melhor. Para uma única equipe pequena, as merges diárias são recomendadas. Também
+                        precisamos ter um processo de construção em vigor. O código merge precisa ser criado
+                        automaticamente para que possa ser testado. Outro requisito necessário é realizar testes
+                        automatizados. Se a equipe tiver uma ferramenta de teste e tiver criado um conjunto de testes, o
+                        teste poderá ser executado em cada compilação e quaisquer erros serão sinalizados. O código pode
+                        ser facilmente alterado para corrigir os erros relatados, porque eles são detectados
+                        antecipadamente e o processo de merge, compilação e teste é iniciado novamente.
+                    </p>
+                    <p>
+                        A Integração Contínua é baseada na integração de conceitos no modelo, encontrando seu caminho
+                        até a implementação onde é testada. Qualquer inconsistência do modelo pode ser detectada na
+                        implementação. A Integração Contínua aplica-se a um Contexto Limitado, não é usada para lidar
+                        com relacionamentos entre Contextos vizinhos.
+                    </p>
+                    <2>Context Map</2>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
 
                     </p>
                     <p>
