@@ -266,6 +266,91 @@
                     </p>
                     <h2>Customer-Supplier (Cliente-Fornecedor)</h2>
                     <p>
+                        Há momentos em que dois subsistemas têm uma relação especial: um depende muito do outro. Os
+                        contextos nos quais esses dois subsistemas existem são diferentes e o resultado do processamento
+                        de um sistema é alimentado no outro. Eles não têm um Kernel Compartilhado, porque pode não ser
+                        conceitualmente correto ter um, ou pode não ser tecnicamente possível para os dois subsistemas
+                        compartilharem código comum. Os dois subsistemas estão em uma relação Cliente-Fornecedor.
+                    </p>
+                    <p>
+                        Voltemos a um exemplo anterior. Falamos anteriormente sobre os modelos envolvidos em um
+                        aplicativo de comércio eletrônico, que inclui relatórios e mensagens. Já dissemos que é muito
+                        melhor criar modelos separados para todos esses contextos, pois um único modelo seria um gargalo
+                        constante e fonte de contenção no processo de desenvolvimento. Supondo que concordemos em ter
+                        modelos separados, quais devem ser os relacionamentos entre o subsistema de compras na web e o
+                        de relatórios? O Kernel Compartilhado não parece ser a escolha certa. O subsistema provavelmente
+                        usará tecnologias diferentes para ser implementado. Um é uma experiência de navegador pura,
+                        enquanto o outro pode ser um aplicativo GUI rico. Mesmo que a aplicação de relatórios seja feita
+                        através de uma interface web, os principais conceitos dos respectivos modelos são diferentes.
+                        Pode haver alguma sobreposição, mas não o suficiente para justificar um Kernel Compartilhado.
+                        Então optamos por um caminho diferente. Por outro lado, o subsistema de e-shopping não depende
+                        em nada do subsistema de relatórios. Os usuários do aplicativo de e-shopping são clientes da web
+                        que procuram mercadorias e fazem pedidos. Todos os dados de clientes, mercadorias e pedidos são
+                        colocados em um banco de dados. E é isso. O aplicativo de e-shopping não está realmente
+                        interessado no que acontece com os respectivos dados. Enquanto isso, o aplicativo de relatórios
+                        está muito interessado e precisa dos dados salvos pelo aplicativo de e-shopping. Ele também
+                        precisa de algumas informações extras para realizar os serviços de relatórios que presta. Os
+                        clientes podem colocar alguma mercadoria na cesta e deixá-la cair antes do check-out. Os
+                        clientes podem visitar alguns links mais do que outros. Esse tipo de informação não tem
+                        significado para o aplicativo de e-shopping, mas pode significar muito para o de relatórios. Em
+                        seguida, o subsistema fornecedor deve implementar algumas especificações que são necessárias ao
+                        subsistema cliente. Esta é uma conexão entre os dois subsistemas.
+                    </p>
+                    <p>
+                        Outro requisito está relacionado ao banco de dados utilizado, mais exatamente seu esquema. Ambos
+                        os aplicativos farão uso do mesmo banco de dados. Se o subsistema de e-shopping fosse o único a
+                        acessar o banco de dados, o esquema do banco de dados poderia ser alterado a qualquer momento
+                        para refletir suas necessidades. Mas o subsistema de relatórios também precisa acessar o banco
+                        de dados, portanto, precisa de alguma estabilidade de seu esquema. É impossível imaginar que o
+                        esquema do banco de dados não mude durante o processo de desenvolvimento. Isso não representará
+                        um problema para o aplicativo de e-shopping, mas certamente será um problema para o de
+                        relatórios. As duas equipes precisarão se comunicar, provavelmente terão que trabalhar juntas no
+                        banco de dados e decidir quando a mudança será realizada. Isso funcionará como uma limitação
+                        para o subsistema de relatórios, porque essa equipe preferiria fazer a mudança rapidamente e
+                        seguir em frente com o desenvolvimento, em vez de esperar pelo aplicativo de e-shopping. Caso a
+                        equipe de e-shopping tenha direito de veto, pode impor limites às alterações a serem feitas no
+                        banco de dados, prejudicando a atividade da equipe de relatórios. Se a equipe de e-shopping
+                        puder
+                        agir de forma independente, eles quebrarão os acordos mais cedo ou mais tarde e implementarão
+                        algumas mudanças para as quais a equipe de relatórios não está preparada. Esse padrão funciona
+                        bem quando as equipes estão sob a mesma gestão. Isso facilita o processo de tomada de decisão e
+                        cria harmonia.
+                    </p>
+                    <p>
+                        Quando nos deparamos com tal cenário, devemos começar a agir. A equipe de relatórios deve
+                        desempenhar o papel de cliente, enquanto a equipe de e-shopping deve desempenhar o papel de
+                        fornecedor. As duas equipes devem se reunir regularmente ou mediante solicitação, e conversar
+                        como um cliente faz com seu fornecedor. A equipe do cliente deve apresentar seus requisitos,
+                        enquanto a equipe do fornecedor deve fazer os planos de acordo. Embora todos os requisitos da
+                        equipe do cliente tenham que ser atendidos no final, o cronograma para isso é decidido pela
+                        equipe do fornecedor. Se alguns requisitos são considerados realmente importantes, eles devem
+                        ser implementados mais cedo, enquanto outros requisitos podem ser adiados. A equipe do cliente
+                        também precisará de informações e conhecimentos a serem compartilhados pela equipe do
+                        fornecedor. Esse processo flui em um sentido, mas é necessário em alguns casos.
+                    </p>
+                    <p>
+                        A interface entre os dois subsistemas precisa ser definida com precisão. Um conjunto de testes
+                        de conformidade deve ser criado e usado para testar a qualquer momento se os requisitos da
+                        interface são respeitados. A equipe do fornecedor poderá trabalhar sem reservas em seu projeto
+                        porque a rede segura do conjunto de testes de interface os alerta sempre que houver um problema.
+                    </p>
+                    <p>
+                        Estabelecer uma relação cliente/fornecedor clara entre as duas equipes. Nas sessões de
+                        planejamento, faça com que a equipe do cliente desempenhe um papel de cliente para a equipe do
+                        fornecedor. Negociar e orçar tarefas para os requisitos do cliente para que todos entendam o
+                        compromisso e o cronograma.
+                    </p>
+                    <p>
+                        Desenvolver em conjunto testes de aceitação automatizados que validarão a interface esperada.
+                        Adicione esses testes ao conjunto de testes da equipe do fornecedor, para serem executados como
+                        parte de sua integração contínua. Esse teste liberará a equipe do fornecedor para fazer
+                        alterações sem medo de efeitos colaterais no aplicativo da equipe do cliente.
+                    </p>
+                    <h2>Conformist (Conformista)</h2>
+                    <p>
+
+                    </p>
+                    <p>
 
                     </p>
                     <p>
