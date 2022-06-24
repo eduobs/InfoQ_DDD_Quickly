@@ -193,32 +193,78 @@
                     </p>
                     <2>Context Map</2>
                     <p>
-
+                        Um aplicativo corporativo tem vários modelos e cada modelo tem seu próprio Contexto Limitado. É
+                        aconselhável usar o contexto como base para a organização da equipe. As pessoas da mesma equipe
+                        podem se comunicar mais facilmente e podem fazer um trabalho melhor integrando o modelo e a
+                        implementação. Embora cada equipe trabalhe em seu modelo, é bom que todos tenham uma ideia do
+                        quadro geral. Um Mapa de Contexto é um documento que descreve os diferentes Contextos
+                        Delimitados e as relações entre eles. Um Mapa de Contexto pode ser um diagrama como o abaixo, ou
+                        pode ser qualquer documento escrito. O nível de detalhe pode variar. O importante é que todos
+                        que trabalham no projeto o compartilhem e o entendam.
+                    </p>
+                    <img src="assets/05-02.JPG" title="img0502" />
+                    <p>
+                        Não basta ter modelos unificados separados. Eles precisam ser integrados, pois a funcionalidade
+                        de cada modelo é apenas uma parte de todo o sistema. No final, as peças devem ser montadas
+                        juntas e todo o sistema deve funcionar corretamente. Se os contextos não estiverem claramente
+                        definidos, é possível que eles se sobreponham. Se as relações entre os contextos não forem
+                        esboçadas, há uma chance de que não funcionem quando o sistema estiver integrado.
                     </p>
                     <p>
-
+                        Cada Contexto Delimitado deve ter um nome que deve fazer parte da Linguagem Ubíqua. Isso ajuda
+                        muito a comunicação da equipe quando se fala de todo o sistema. Todos devem conhecer os limites
+                        de cada contexto e o mapeamento entre contextos e código. Uma prática comum é definir os
+                        contextos, criar módulos para cada contexto e usar uma convenção de nomenclatura para indicar o
+                        contexto ao qual cada módulo pertence.
                     </p>
                     <p>
-
+                        Nas páginas seguintes falamos sobre a interação entre diferentes contextos. Apresentamos uma
+                        série de padrões que podem ser usados para criar Mapas de Contexto onde os contextos têm papéis
+                        claros e seus relacionamentos são apontados. O Shared Kernel (Kernel Compartilhado) e o
+                        Customer-Supplier (Cliente-Fornecedor) são padrões com alto grau de interação entre contextos.
+                        Separate Ways (Modos Separados) é um padrão usado quando queremos que os contextos sejam
+                        altamente independentes e evoluam separadamente. Existem outros dois padrões que tratam da
+                        interação entre um sistema e um sistema legado ou externo, e eles são Open Host Services e
+                        Anticorruption Layers.
+                    </p>
+                    <h2>Shared Kernel</h2>
+                    <img src="assets/05-03.JPG" title="img0503" />
+                    <p>
+                        Quando a integração funcional é limitada, a sobrecarga de Continuous Integration (Integração
+                        Contínua) pode ser considerada muito alta. Isso pode ser especialmente verdade quando as equipes
+                        não têm a habilidade ou a organização política para manter o continuous integration, ou quando
+                        uma única equipe é simplesmente muito grande e difícil de gerenciar. Portanto, contextos
+                        delimitados separados podem ser definidos e várias equipes formadas.
                     </p>
                     <p>
-
+                        Equipes descoordenadas trabalhando em aplicativos intimamente relacionados podem avançar por um
+                        tempo, mas o que eles produzem pode não se encaixar. Eles podem acabar gastando mais em camadas
+                        de tradução e adaptação do que gastariam em Continuous Integration em primeiro lugar, enquanto
+                        duplicam esforços e perdem os benefícios de uma Linguagem Ubíqua comum.
                     </p>
                     <p>
-
+                        Portanto, designe algum subconjunto do modelo de domínio que as duas equipes concordem em
+                        compartilhar. É claro que isso inclui, junto com esse subconjunto do modelo, o subconjunto de
+                        código ou o design do banco de dados associado a essa parte do modelo. Essas coisas
+                        explicitamente compartilhadas têm um status especial e não devem ser alteradas sem consulta à
+                        outra equipe.
                     </p>
                     <p>
-
+                        Integre um sistema funcional com frequência, mas um pouco menos do que o ritmo da Continuous
+                        Integration dentro das equipes. Durante essas integrações, execute os testes de ambas as
+                        equipes.
                     </p>
                     <p>
-
+                        A finalidade do Shared Kernel é reduzir a duplicidade, mas ainda manter dois contextos
+                        separados. O desenvolvimento em um kernel compartilhado precisa de muito cuidado. Ambas as
+                        equipes podem modificar o código do kernel e precisam integrar as alterações. Se as equipes
+                        usarem cópias separadas do código do kernel, elas precisam mesclar o código o mais rápido
+                        possível, pelo menos semanalmente. Um conjunto de testes deve estar em vigor, para que todas as
+                        alterações feitas no kernel sejam testadas imediatamente. Qualquer alteração do kernel deve ser
+                        comunicada a outra equipe, e as equipes devem ser informadas, tornando-as cientes da nova
+                        funcionalidade.
                     </p>
-                    <p>
-
-                    </p>
-                    <p>
-
-                    </p>
+                    <h2>Customer-Supplier (Cliente-Fornecedor)</h2>
                     <p>
 
                     </p>
