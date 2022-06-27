@@ -349,6 +349,137 @@
                     </p>
                     <h2>Conformist (Conformista)</h2>
                     <p>
+                        Um relacionamento Cliente-Fornecedor é viável quando ambas as equipes estão interessadas no
+                        relacionamento. O cliente é muito dependente do fornecedor, enquanto o fornecedor não é. Se
+                        houver uma gestão para fazer isso funcionar, o fornecedor dará a atenção necessária e ouvirá as
+                        solicitações do cliente. Se a gerência não tiver decidido claramente como as coisas devem ser
+                        entre as duas equipes, ou se houver má gestão ou falta dela, o fornecedor lentamente estará mais
+                        preocupado com seu modelo e design e menos interessado em ajudar o cliente. Afinal, eles têm
+                        seus próprios prazos. Mesmo que sejam boas pessoas, dispostas a ajudar a outra equipe, a pressão
+                        do tempo terá sua palavra e a equipe do cliente sofrerá. Isso também acontece quando as equipes
+                        pertencem a empresas diferentes. A comunicação é difícil, e a empresa fornecedora pode não estar
+                        interessada em investir muito nesse relacionamento. Eles fornecerão ajuda esporádica ou
+                        simplesmente se recusarão a cooperar. O resultado é que a equipe do cliente está por conta
+                        própria, tentando fazer o melhor com o modelo e o design.
+                    </p>
+                    <p>
+                        Quando duas equipes de desenvolvimento têm um relacionamento cliente-fornecedor no qual a equipe
+                        do fornecedor não tem motivação para atender às necessidades da equipe do cliente, a equipe do
+                        cliente fica impotente. O altruísmo pode motivar os desenvolvedores de fornecedores a fazer
+                        promessas, mas é improvável que sejam cumpridas. A crença nessas boas intenções leva a equipe do
+                        cliente a fazer planos com base em recursos que nunca estarão disponíveis. O projeto do cliente
+                        será adiado até que a equipe aprenda a viver com o que lhe é dado. Uma interface adaptada às
+                        necessidades da equipe do cliente não está nos cards.
+                    </p>
+                    <p>
+                        A equipe do cliente tem poucas opções. A mais óbvia é separar-se do fornecedor e ficar
+                        completamente por conta própria. Veremos isso mais tarde no padrão Separate Ways. Às vezes, os
+                        benefícios fornecidos pelo subsistema do fornecedor não valem a pena. Pode ser mais simples
+                        criar um modelo separado e projetar sem ter que pensar no modelo do fornecedor. Mas isso nem
+                        sempre é o caso.
+                    </p>
+                    <p>
+                        Às vezes, há algum valor no modelo do fornecedor e uma conexão precisa ser mantida. Mas como a
+                        equipe do fornecedor não ajuda a equipe do cliente, este último tem que tomar algumas medidas
+                        para se proteger das mudanças de modelo realizadas pela equipe anterior. Eles terão que
+                        implementar uma camada de tradução que conecte os dois contextos. Também é possível que o modelo
+                        da equipe fornecedora seja mal concebido, dificultando sua utilização. O contexto do cliente
+                        ainda pode fazer uso dele, mas deve se proteger usando uma Camada Anticorrupção que discutiremos
+                        mais adiante.
+                    </p>
+                    <p>
+                        Se o cliente tiver que usar o modelo da equipe do fornecedor, e se isso for bem feito, pode ser
+                        a hora da conformidade. A equipe do cliente poderia aderir ao modelo da equipe do fornecedor,
+                        conformando-se inteiramente a ele. Isso é muito parecido com o Kernel Compartilhado, mas há uma
+                        diferença importante. A equipe do cliente não pode fazer alterações no kernel. Eles só podem
+                        usá-lo como parte de seu modelo e podem construir no código existente fornecido. Há muitas vezes
+                        em que tal solução é viável. Quando alguém fornece um componente rico e fornece uma interface
+                        para ele, podemos construir nosso modelo incluindo o respectivo componente como se fosse nosso.
+                        Se o componente tiver uma interface pequena, talvez seja melhor simplesmente criar um adaptador
+                        para ele e traduzir entre nosso modelo e o modelo do componente. Isso isolaria nosso modelo e
+                        podemos desenvolvê-lo com um alto grau de liberdade.
+                    </p>
+                    <h2>Anticorruption Layer (Camada Anticorrupção)</h2>
+                    <p>
+                        Muitas vezes encontramos circunstâncias quando criamos um aplicativo que precisa interagir com
+                        software legado ou um aplicativo separado. Este é outro desafio para o modelador de domínio.
+                        Muitos aplicativos legados não foram construídos usando técnicas de modelagem de domínio e seu
+                        modelo é confuso, complicado de entender e difícil de trabalhar. Mesmo que tenha sido bem feito,
+                        o modelo de aplicativo legado não é de muita utilidade para nós, porque nosso modelo
+                        provavelmente será bem diferente. No entanto, tem que haver um nível de integração entre o nosso
+                        modelo e o legado, pois é um dos requisitos para usar a aplicação antiga.
+                    </p>
+                    <p>
+                        Existem diferentes maneiras de nosso sistema cliente interagir com um sistema externo. Uma delas
+                        é através de conexões de rede. Ambos os aplicativos precisam usar os mesmos protocolos de
+                        comunicação de rede e o cliente precisa aderir à interface usada pelo sistema externo. Outro
+                        método de interação é o banco de dados. O sistema externo trabalha com dados armazenados em um
+                        banco de dados. O sistema cliente deve acessar o mesmo banco de dados. Em ambos os casos estamos
+                        lidando com dados primitivos sendo transferidos entre os sistemas. Embora isso pareça bastante
+                        simples, a verdade é que os dados primitivos não contêm nenhuma informação sobre os modelos. Não
+                        podemos pegar dados de um banco de dados e tratá-los como dados primitivos. Há muita semântica
+                        escondida por trás dos dados. Um banco de dados relacional contém dados primitivos relacionados
+                        a outros dados primitivos criando uma teia de relacionamentos. A semântica dos dados é muito
+                        importante e precisa ser considerada. O aplicativo cliente não pode acessar o banco de dados e
+                        gravar nele sem entender o significado dos dados usados. Vemos que partes do modelo externo são
+                        refletidas no banco de dados e entram em nosso modelo.
+                    </p>
+                    <p>
+                        Existe o risco de o modelo externo alterar o modelo do cliente se permitirmos que isso aconteça.
+                        Não podemos ignorar a interação com o modelo externo, mas devemos ter o cuidado de isolar nosso
+                        próprio modelo dele. Devemos construir uma Camada Anticorrupção que fique entre o nosso modelo
+                        de cliente e o externo. Do ponto de vista do nosso modelo, a Camada Anticorrupção é uma parte
+                        natural do modelo; não parece algo estranho. Opera com conceitos e ações familiares ao nosso
+                        modelo. Mas a Camada Anticorrupção fala com o modelo externo usando a linguagem externa e não a
+                        do cliente. Essa camada funciona como um tradutor bidirecional entre dois domínios e idiomas. A
+                        maior conquista é que o modelo de cliente permanece puro e consistente sem ser contaminado pelo
+                        externo.
+                    </p>
+                    <p>
+                        Como devemos implementar a Camada Anticorrupção? Uma solução muito boa é ver a camada como
+                        Serviço a partir do modelo cliente. É muito simples usar um Serviço porque ele abstrai o outro
+                        sistema e nos permite abordá-lo em nossos próprios termos. O Serviço fará a tradução necessária,
+                        para que nosso modelo permaneça isolado. Em relação à implementação real, o Serviço será feito
+                        como Facade (Fachada) (Veja Design Pattern by Gamma et al. 1995). Além disso, a Camada
+                        Anticorrupção
+                        provavelmente precisará de um Adaptador. O Adapter permite converter a interface de uma classe
+                        para aquela compreendida pelo cliente. No nosso caso, o Adapter não necessariamente envolve uma
+                        classe, pois seu trabalho é traduzir entre dois sistemas.
+                    </p>
+                    <img src="assets/05-04.JPG" title="img0504" />
+                    <p>
+                        A Camada Anticorrupção pode conter mais de um Serviço. Para cada Serviço existe uma Facade
+                        correspondente, e para cada Facade adicionamos um Adaptador. Não devemos usar um único
+                        Adaptador para todos os Serviços, porque o sobrecarregamos com funcionalidades mistas.
+                    </p>
+                    <p>
+                        Ainda temos que adicionar mais um componente. O Adapter cuida de encerrar o comportamento do
+                        sistema externo. Também precisamos de conversão de objetos e dados. Isso é feito usando um
+                        tradutor.
+                    </p>
+                    <p>
+                        Este pode ser um objeto muito simples, com pouca funcionalidade, atendendo a necessidade básica
+                        de tradução de dados. Se o sistema externo tiver uma interface complexa, pode ser melhor
+                        adicionar uma Facade adicional entre os adaptadores e essa interface. Isso simplificará o
+                        protocolo do Adaptador e o separará do outro sistema.
+                    </p>
+                    <h2>Separate Ways</h2>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
+
+                    </p>
+                    <p>
 
                     </p>
                     <p>
