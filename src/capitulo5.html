@@ -465,34 +465,202 @@
                     </p>
                     <h2>Separate Ways</h2>
                     <p>
-
+                        Até agora, tentamos encontrar maneiras de integrar subsistemas, fazê-los funcionar juntos e
+                        fazê-lo de forma a manter o modelo e o design sólidos. Isso requer esforço e compromisso. As
+                        equipes que trabalham nos respectivos subsistemas precisam gastar um tempo considerável para
+                        resolver os relacionamentos entre os subsistemas. Eles podem precisar fazer uma mesclagem
+                        constante de seu código e realizar testes para garantir que não tenham quebrado nada. Às vezes,
+                        um membro da equipe precisa gastar um tempo considerável apenas para implementar alguns
+                        requisitos que são necessários para a outra equipe. Há também compromissos a serem feitos. Uma
+                        coisa é desenvolver de forma independente, escolher livremente os conceitos e associações, e
+                        outra é garantir que seu modelo se encaixe na estrutura de outro sistema. Podemos precisar
+                        alterar o modelo apenas para fazê-lo funcionar com o outro subsistema. Ou podemos precisar
+                        introduzir camadas especiais que realizam traduções entre os dois subsistemas. Há momentos em
+                        que temos que fazer isso, mas há momentos em que podemos seguir um caminho diferente. Precisamos
+                        avaliar de perto os benefícios da integração e usá-la apenas se houver valor real em fazê-lo. Se
+                        chegarmos à conclusão de que a integração é mais problemática do que vale a pena, devemos seguir
+                        os Caminhos Separados.
                     </p>
                     <p>
-
+                        O padrão Separate Ways aborda o caso em que um aplicativo corporativo pode ser composto de
+                        vários aplicativos menores que têm pouco ou nada em comum do ponto de vista de modelagem. Existe
+                        um único conjunto de requisitos, e do ponto de vista do usuário esta é uma aplicação, mas do
+                        ponto de vista de modelagem e design pode ser feito usando modelos separados com implementações
+                        distintas. Devemos olhar para os requisitos e ver se eles podem ser divididos em dois ou mais
+                        conjuntos que não têm muito em comum. Se isso puder ser feito, podemos criar Contextos
+                        Delimitados separados e fazer a modelagem de forma independente. Isso tem a vantagem de ter a
+                        liberdade de escolher as tecnologias utilizadas para implementação. Os aplicativos que estamos
+                        criando podem compartilhar uma interface gráfica comum que atua como um portal com links ou
+                        botões usados ​​para acessar cada aplicativo. Essa é uma integração menor que tem a ver com a
+                        organização dos aplicativos, e não com o modelo por trás deles.
                     </p>
                     <p>
-
+                        Antes de seguir em Separate Ways, precisamos ter certeza de que não voltaremos a um sistema
+                        integrado. Modelos desenvolvidos de forma independente são muito difíceis de integrar. Eles têm
+                        tão pouco em comum que simplesmente não vale a pena fazê-lo.
+                    </p>
+                    <h2>Open Host Service</h2>
+                    <p>
+                        Quando tentamos integrar dois subsistemas, geralmente criamos uma camada de tradução entre eles.
+                        Essa camada atua como um buffer entre o subsistema cliente e o subsistema externo com o qual
+                        desejamos integrar. Essa camada pode ser consistente, dependendo da complexidade dos
+                        relacionamentos e de como o subsistema externo foi projetado. Se o subsistema externo for usado
+                        não por um subsistema cliente, mas por vários, precisamos criar camadas de tradução para todos
+                        eles. Todas essas camadas repetirão a mesma tarefa de tradução e conterão código semelhante.
                     </p>
                     <p>
-
+                        Quando um subsistema precisa ser integrado a muitos outros, personalizar um tradutor para cada
+                        um pode atrapalhar a equipe. Há cada vez mais para manter, e cada vez mais para se preocupar
+                        quando as mudanças são feitas.
                     </p>
                     <p>
-
+                        A solução é ver o subsistema externo como um provedor de serviços. Se pudermos envolver um
+                        conjunto de serviços em torno dele, todos os outros subsistemas acessarão esses serviços e não
+                        precisaremos de nenhuma camada de tradução. A dificuldade é que cada subsistema pode precisar
+                        interagir de uma maneira específica com o subsistema externo, e criar um conjunto coerente de
+                        Serviços pode ser problemático.
                     </p>
                     <p>
-
+                        Defina um protocolo que dê acesso ao seu subsistema como um conjunto de Serviços. Abra o
+                        protocolo para que todos que precisam se integrar com você possam usá-lo. Aprimore e expanda o
+                        protocolo para lidar com novos requisitos de integração, exceto quando uma única equipe tiver
+                        necessidades idiossincráticas. Em seguida, use um tradutor único para aumentar o protocolo para
+                        esse caso especial para que o protocolo compartilhado possa permanecer simples e coerente.
+                    </p>
+                    <h2>Distillation (Destilação)</h2>
+                    <p>
+                        A destilação é o processo de separação das substâncias que compõem uma mistura. O objetivo da
+                        destilação é extrair uma determinada substância da mistura. Durante o processo de destilação,
+                        alguns subprodutos podem ser obtidos, e também podem ser de interesse.
                     </p>
                     <p>
-
+                        Um domínio grande tem um modelo grande mesmo depois de refiná-lo e criar muitas abstrações. Ele
+                        pode permanecer grande mesmo após muitas refatorações. Em situações como esta, pode ser hora de
+                        uma destilação. A ideia é definir um Core Domain que represente a essência do domínio. Os
+                        subprodutos do processo de destilação serão Subdomínios Genéricos que comporão as demais partes
+                        do domínio.
                     </p>
                     <p>
-
+                        Ao projetar um grande sistema, há tantos componentes contribuintes, todos complicados e
+                        absolutamente necessários para o sucesso, que a essência do modelo de domínio, o ativo real do
+                        negócio, pode ser obscurecida e negligenciada.
                     </p>
                     <p>
-
+                        Ao trabalhar com um modelo grande, devemos tentar separar os conceitos essenciais dos genéricos.
+                        No início demos o exemplo de um sistema de monitoramento de tráfego aéreo. Dissemos que um Plano
+                        de Voo contém a Rota projetada que o avião deve seguir. A Rota parece ser um conceito sempre
+                        presente neste sistema. Na verdade, este conceito é genérico, e não essencial. O conceito de
+                        Rota é usado em muitos domínios, e um modelo genérico pode ser projetado para descrevê-lo. A
+                        essência do monitoramento do tráfego aéreo está em outro lugar. O sistema de monitoramento sabe
+                        a rota que o avião deve seguir, mas também recebe informações de uma rede de radares que
+                        rastreiam o avião no ar. Esses dados mostram o caminho real seguido pelo avião, e geralmente é
+                        diferente do prescrito. O sistema terá que calcular a trajetória do avião com base em seus
+                        parâmetros de voo atuais, características do avião e clima. A trajetória é um caminho
+                        quadridimensional que descreve completamente a rota que o avião irá percorrer no tempo. A
+                        trajetória pode ser calculada para os próximos minutos, para as próximas dezenas de minutos ou
+                        para as próximas horas. Cada um desses cálculos auxilia no processo de tomada de decisão. Todo o
+                        propósito de calcular a trajetória do avião é ver se há alguma chance de o caminho deste avião
+                        cruzar o de outro. Nas proximidades dos aeroportos, durante a decolagem e pouso, muitos aviões
+                        estão circulando no ar ou fazendo manobras. Se um avião se desviar de sua rota planejada, há uma
+                        grande possibilidade de ocorrer um acidente aéreoa. O sistema de monitoramento de tráfego
+                        aéreo calculará as trajetórias dos aviões e emitirá um alerta se houver possibilidade de
+                        interseção. Os controladores de tráfego aéreo terão que tomar decisões rápidas, direcionando os
+                        aviões para evitar a colisão. Quando os planos estão mais distantes, as trajetórias são
+                        computadas por períodos de tempo mais longos e há mais tempo para a reação. O módulo que
+                        sintetiza a trajetória do plano a partir dos dados disponíveis é o coração do sistema de
+                        negócios aqui. Isso deve ser marcado como o domínio principal. O modelo de roteamento é mais um
+                        domínio genérico.
                     </p>
                     <p>
-
+                        O Core Domain de um sistema depende de como olhamos para o sistema. Um sistema de roteamento
+                        simples verá a Rota e suas dependências como centrais para o projeto. O sistema de monitoramento
+                        de tráfego aéreo considerará a Rota como um subdomínio genérico. O Core Domain de um aplicativo
+                        pode se tornar um subdomínio genérico de outro. É importante identificar corretamente o Core e
+                        determinar as relações que ele tem com outras partes do modelo.
+                    </p>
+                    <p>
+                        Resumo do modelo. Encontre o Core Domain e forneça um meio de distingui-lo facilmente da massa
+                        de
+                        modelo e código de suporte. Enfatize os conceitos mais valiosos e especializados. Faça o núcleo
+                        pequeno.
+                    </p>
+                    <p>
+                        Aplique seus principais talentos ao Domínio Principal e recrute de acordo. Gaste o esforço no
+                        Core para encontrar um modelo profundo e desenvolver um design flexível - suficiente para
+                        cumprir a visão do sistema. Justifique o investimento em qualquer outra parte pela forma como
+                        suporta o Core destilado.
+                    </p>
+                    <p>
+                        É importante atribuir aos melhores desenvolvedores a tarefa de implementar o Core Domain. Os
+                        desenvolvedores geralmente tendem a gostar de tecnologias, de aprender a melhor e mais recente
+                        linguagem, sendo direcionados mais para a infraestrutura do que para a lógica de negócios. A
+                        lógica de negócios de um domínio parece ser chata para eles e de pouca recompensa. Afinal, qual
+                        é o sentido de aprender detalhes sobre trajetórias planas? Quando o projeto é concluído, todo
+                        esse conhecimento se torna coisa do passado com muito pouco benefício. Mas a lógica de negócios
+                        do domínio é o coração do domínio. Erros na concepção e implementação do núcleo podem levar ao
+                        abandono total do projeto. Se a lógica do negócio principal não fizer seu trabalho, todos os
+                        sinos e assobios tecnológicos não valerão nada.
+                    </p>
+                    <p>
+                        Um Core Domain geralmente não é criado em uma etapa final. Um processo de refinamento e
+                        refatorações sucessivos são necessárias antes que o Core emerja com mais clareza. Precisamos
+                        impor o Core como peça central do projeto e delimitar seus limites. Também precisamos repensar
+                        os demais elementos do modelo em relação ao novo Core. Eles podem precisar ser refatorados
+                        também, algumas funcionalidades podem precisar ser alteradas.
+                    </p>
+                    <p>
+                        Algumas partes do modelo adicionam complexidade sem capturar ou comunicar conhecimento
+                        especializado. Qualquer coisa estranha torna o Domínio Central mais difícil de discernir e
+                        entender. O modelo está repleto de princípios gerais que todos conhecem ou detalhes que
+                        pertencem a especialidades que não são seu foco principal, mas desempenham um papel coadjuvante.
+                        No entanto, por mais genéricos que sejam, esses outros elementos são essenciais ao funcionamento
+                        do sistema e à plena expressão do modelo.
+                    </p>
+                    <p>
+                        Identifique subdomínios coesos que não são a motivação do seu projeto. Fatore modelos genéricos
+                        desses subdomínios e coloque-os em módulos separados. Não deixe nenhum vestígio de suas
+                        especialidades neles.
+                    </p>
+                    <p>
+                        Depois que eles forem separados, dê ao seu desenvolvimento contínuo uma prioridade menor do que
+                        o Core Domain e evite atribuir seus desenvolvedores principais às tarefas (porque eles
+                        obterão pouco conhecimento de domínio deles). Considere também soluções prontas ou modelos
+                        publicados para esses subdomínios genéricos.
+                    </p>
+                    <p>
+                        Cada domínio usa conceitos que são usados por outros domínios. O dinheiro e seus conceitos
+                        relacionados, como moeda e taxa de câmbio, podem ser incluídos em diferentes sistemas. O gráfico
+                        é outro conceito amplamente utilizado, que é muito complexo por si só, mas pode ser usado em
+                        muitas aplicações.
+                    </p>
+                    <p>
+                        Existem diferentes maneiras de implementar um subdomínio genérico:
+                        <br />
+                    <ol class="decimal">
+                        <li><b>Solução de prateleira.</b> Esta tem a vantagem de ter toda a solução já feita por outra
+                            pessoa. Ainda há uma curva de aprendizado associada a ela, e tal solução introduz algumas
+                            dependências. Se o código estiver bugado, você terá que esperar para ser corrigido. Você
+                            também precisa usar certos compiladores e versões de biblioteca. A integração não é tão
+                            facilmente realizada em comparação com um sistema interno.
+                        </li>
+                        <li>
+                            <b>Terceirização.</b> O projeto e a implementação são entregues a outra equipe,
+                            provavelmente de outra empresa. Isso permite que você se concentre no Domínio Principal e
+                            tire a carga de outro domínio para lidar. Ainda há o inconveniente de integrar o código
+                            terceirizado. A interface usada para se comunicar com o subdomínio precisa ser definida e
+                            comunicada à outra equipe.
+                        </li>
+                        <li>
+                            <b>Modelo Existente.</b> Uma solução prática é usar um modelo já criado. Existem alguns
+                            livros que publicaram padrões de análise e podem ser usados como inspiração para nossos
+                            subdomínios. Pode não ser possível copiar os padrões ad literam, mas muitos deles podem ser
+                            usados com pequenas alterações.
+                        </li>
+                        <li>
+                            <b>Implementação In-House.</b> Esta solução tem a vantagem de alcançar o melhor nível de
+                            integração. Isso significa esforço extra, incluindo a carga de manutenção.
+                        </li>
+                    </ol>
                     </p>
                 </article>
             </main>
