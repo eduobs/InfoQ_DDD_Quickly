@@ -27,6 +27,7 @@
                         InfoQ.com entrevista o fundador do Domain Driven Design, Eric Evans, para colocar o Domain
                         Driven Design em um contexto moderno:
                     </p>
+                    <br />
                     <p><b><i>Por que o DDD é tão importante hoje quanto sempre?</i></b></p>
                     <p>
                         Fundamentalmente, o DDD é o princípio de que devemos nos concentrar nas questões profundas do
@@ -65,6 +66,122 @@
                     <p>
                         Portanto, o DDD parece ser cada vez mais importante no futuro próximo, e algumas bases parecem
                         estar estabelecidas.
+                    </p>
+                    <p>
+                        <b><i>
+                                As plataformas de tecnologia (Java, .NET, Ruby, outras) estão em constante evolução.
+                                Como o
+                                Domain Driven Design se encaixa?
+                            </i></b>
+                    </p>
+                    <p>
+                        Na verdade, novas tecnologias e processos devem ser julgados se dão suporte às equipes para que
+                        se concentrem em seu domínio, em vez de distraí-las dele. O DDD não é específico para uma
+                        plataforma de tecnologia, mas algumas plataformas oferecem maneiras mais expressivas de criar
+                        lógica de negócios e algumas plataformas têm menos confusão. Em relação aos últimos, os últimos
+                        anos indicam uma direção esperançosa, principalmente após o terrível final dos anos 1990.
+                    </p>
+                    <p>
+                        Java tem sido a escolha padrão dos últimos anos e, quanto à expressividade, é típico das
+                        linguagens orientadas a objetos. Quanto à desordem de distração, o idioma base não é tão ruim.
+                        Tem garbage collection, que, na prática, acaba sendo essencial. (Em contraste com o C++, que
+                        apenas exigia muita atenção aos detalhes de baixo nível.) A sintaxe Java é um pouco confusa, mas
+                        os objetos Java simples e antigos (POJOs) ainda podem ser lidos. E algumas das inovações de
+                        sintaxe do Java 5 ajudam na legibilidade.
+                    </p>
+                    <p>
+                        Mas quando os frameworks J2EE foram lançados, eles enterraram totalmente essa expressividade
+                        básica sob montanhas de código de framework. Seguindo as primeiras convenções (como EJB home,
+                        get/set prefixed accessors para todas as variáveis, etc.) produziam objetos terríveis. As
+                        ferramentas eram tão complicadas que absorviam toda a capacidade das equipes de desenvolvimento
+                        apenas para fazer funcionar. E era tão difícil mudar objetos, uma vez que a enorme confusão de
+                        código gerado e XML tinha sido vomitada, que as pessoas simplesmente não os mudavam muito. Essa
+                        era uma plataforma que tornava quase impossível a modelagem de domínio eficaz.
+                    </p>
+                    <p>
+                        Combine isso com o imperativo de produzir UIs da Web mediadas por http e html (que não foram
+                        projetados para esse fim) usando ferramentas bastante primitivas de primeira geração. Durante
+                        esse período, criar e manter uma interface de usuário decente tornou-se tão difícil que pouca
+                        atenção foi deixada para o design de funcionalidades internas complexas. Ironicamente, no exato
+                        momento em que a tecnologia de objetos assumiu o controle, a modelagem e o design sofisticados
+                        sofreram um forte golpe.
+                    </p>
+                    <p>
+                        A situação foi semelhante na plataforma .Net, com algumas questões sendo tratadas um pouco
+                        melhor e outras um pouco piores.
+                    </p>
+                    <p>
+                        Esse foi um período desanimador, mas as tendências mudaram nos últimos quatro anos. Primeiro,
+                        olhando para Java, houve uma confluência de uma nova sofisticação na comunidade sobre como usar
+                        frameworks seletivamente e uma variedade de novos frameworks (principalmente de código aberto)
+                        que estão melhorando de forma incremental. Frameworks como Hibernate e Spring tratam de
+                        trabalhos específicos que J2EE tentou resolver, mas de uma forma muito mais leve. Abordagens
+                        como AJAX, que tentam resolver o problema da interface do usuário, de maneira menos trabalhosa.
+                        E os projetos são muito mais inteligentes agora sobre escolher os elementos do J2EE que lhes dão
+                        valor e misturar alguns desses elementos mais novos. O termo POJO foi cunhado durante esta
+                        época.
+                    </p>
+                    <p>
+                        O resultado é uma diminuição incremental, mas perceptível, no esforço técnico dos projetos e uma
+                        melhoria distinta no isolamento da lógica de negócios do resto do sistema para que possa ser
+                        escrito em termos de POJOs. Isso não produz automaticamente um design orientado ao domínio, mas
+                        o torna uma oportunidade realista.
+                    </p>
+                    <p>
+                        Esse é o mundo Java. Então você tem os recém-chegados como Ruby. Ruby tem uma sintaxe muito
+                        expressiva e, neste nível básico, deve ser uma linguagem muito boa para DDD (embora eu ainda não
+                        tenha ouvido falar de uso real dele nesses tipos de aplicativos ainda). Rails gerou muita
+                        empolgação porque finalmente parece tornar a criação de UIs da Web tão fácil quanto as UIs eram
+                        no início dos anos 1990, antes da Web. No momento, esse recurso tem sido aplicado principalmente
+                        na construção de alguns dos vastos números de aplicativos da Web que não têm muita riqueza de
+                        domínio por trás deles, já que mesmo esses foram dolorosamente difíceis no passado. Mas minha
+                        esperança é que, à medida que a parte da implementação da interface do usuário do problema for
+                        reduzida, as pessoas vejam isso como uma oportunidade de concentrar mais sua atenção no domínio.
+                        Se o uso de Ruby começar a ir nessa direção, acho que poderia fornecer uma excelente plataforma
+                        para DDD. (Algumas peças de infraestrutura provavelmente teriam que ser preenchidas.)
+                    </p>
+                    <p>
+                        Mais de ponta são os esforços na área de linguagens específicas de domínio (DSLs), que há muito
+                        acredito que poderiam ser o próximo grande passo para o DDD. Até hoje, ainda não temos uma
+                        ferramenta que realmente nos dê o que precisamos. Mas as pessoas estão experimentando mais do
+                        que nunca nessa área, e isso me deixa esperançoso.
+                    </p>
+                    <p>
+                        No momento, até onde eu sei, a maioria das pessoas que tentam aplicar o DDD está trabalhando em
+                        Java ou .Net, com algumas em Smalltalk. Portanto, é a tendência positiva no mundo Java que está
+                        tendo efeito imediato.
+                    </p>
+                    <p>
+                        <b><i>O que está acontecendo na comunidade DDD desde que você escreveu seu livro?</i></b>
+                    </p>
+                    <p>
+                        Uma coisa que me empolga é quando as pessoas pegam os princípios sobre os quais falei em meu
+                        livro e os usam de maneiras que eu nunca esperava. Um exemplo é o uso do desenho estratégico na
+                        StatOil, empresa petrolífera nacional norueguesa. Os arquitetos de lá escreveram um relato de
+                        experiência sobre isso. (Você pode lê-lo em
+                        <a href="http://domaindrivendesign.org/articles/">http://domaindrivendesign.org/articles/</a>.)
+                    </p>
+                    <p>
+                        Entre outras coisas, eles usaram o mapeamento de contexto e o aplicaram à avaliação de software
+                        de prateleira em decisões de construção versus compra.
+                    </p>
+                    <p>
+                        Como um exemplo bem diferente, alguns de nós têm explorado alguns problemas desenvolvendo uma
+                        biblioteca de código Java de alguns objetos de domínio fundamentais necessários para muitos
+                        projetos. As pessoas podem conferir isso em:
+                        <br />
+                        <a href="http://timeandmoney.domainlanguage.com">http://timeandmoney.domainlanguage.com</a>
+                    </p>
+                    <p>
+                        Estamos explorando, por exemplo, até onde podemos levar a ideia de uma linguagem fluente e
+                        específica de domínio, enquanto ainda implementamos objetos em Java.
+                    </p>
+                    <p>
+                        Muita coisa está acontecendo lá fora. Eu sempre aprecio quando as pessoas entram em contato
+                        comigo para me contar sobre o que estão fazendo.
+                    </p>
+                    <p>
+
                     </p>
                     <p>
 
