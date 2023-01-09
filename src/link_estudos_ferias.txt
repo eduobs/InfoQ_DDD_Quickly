@@ -1,0 +1,24 @@
+https://www.codemag.com/Magazine/Issue/7886049d-d6c8-4959-b511-c9acddd88cd2
+https://www.codemag.com/Article/2209061/Benchmarking-.NET-6-Applications-Using-BenchmarkDotNet-A-Deep-Dive
+https://learn.microsoft.com/pt-br/azure/azure-app-configuration/use-feature-flags-dotnet-core?tabs=core5x&source=docs
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+https://nsubstitute.github.io/help/received-calls/
+https://medium.com/clarityai-engineering/clean-code-a-practical-approach-896546435235
+https://learn.microsoft.com/en-us/azure/devops/boards/backlogs/manage-bugs?view=azure-devops
+https://code-maze.com/masstransit-rabbitmq-aspnetcore/
+https://dev.to/lydiahallie/javascript-visualized-prototypal-inheritance-47co
+https://dev.to/guisfits/implementando-domain-driven-design-3d1h
+https://www.hackerrank.com/
+https://medium.com/xp-inc/aprendendo-os-componentes-de-middleware-do-asp-net-core-parte-1-b7d85dcccb2d
+https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-feature-flags-dotnet-core?tabs=core5x
+https://quastor.substack.com/p/how-to-design-better-apis?s=r&triedSigningIn=true
+https://learn.microsoft.com/pt-br/dotnet/architecture/microservices/net-core-net-framework-containers/official-net-docker-images
+
+
+
+Jogo do Diego
+https://github.com/tiny-devs/tiny-dungeon-online/tree/master/server
+
+Telescopios
+https://www.bigbigspace.com/telescope/n607-newton-to-see-here
+
