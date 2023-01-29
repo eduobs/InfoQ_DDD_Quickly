@@ -22,5 +22,4 @@ https://github.com/tiny-devs/tiny-dungeon-online/tree/master/server
 Telescopios
 https://www.bigbigspace.com/telescope/n607-newton-to-see-here
 
-
-https://exame.com/conta-em-dia/planejar/aulas-reforco-escolar-empreendedores-faturam-milhoes-por-ano/
+https://www.luisdev.com.br/2021/01/03/testes-unitarios-com-net-core-mocking-com-nsubstitute/?gclid=Cj0KCQjwhsmaBhCvARIsAIbEbH619MLQ8ncJOonkb2wVM-zLMghIBYZSBVbFDp42qsnSQbm8ViapQAAaArgOEALw_wcB
